@@ -1,97 +1,67 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Maha Baig | Cybersecurity Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="html5up-dimension/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Maha Baig | Cybersecurity Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="html5up-dimension/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- 🎨 Custom Styling for Background Video + Cinematic Fade -->
+    <style>
+      /* Hide the original static background */
+      #bg { background: none !important; }
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span class="icon fa-shield-alt"></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Maha Baig</h1>
-								<p>CompTIA Security+ certified cybersecurity analyst passionate about threat detection, incident response, and cloud security.<br />
-								Explore my projects and labs below to see how I turn data into defense.</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#intro">Overview</a></li>
-								<li><a href="#work">Projects</a></li>
-								<li><a href="#about">About Me</a></li>
-								<li><a href="#contact">Contact</a></li>
-							</ul>
-						</nav>
-					</header>
+      /* Fullscreen background video */
+      #bg-video {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        filter: brightness(0.55) contrast(1.1) saturate(1.2);
+      }
 
-				<!-- Main -->
-					<div id="main">
+      /* Dark overlay tint */
+      #video-overlay {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(rgba(0, 25, 60, 0.25), rgba(0, 0, 0, 0.7));
+        z-index: -1;
+      }
 
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Overview</h2>
-								<p>Welcome to my cybersecurity portfolio! Here, you’ll find projects and labs that demonstrate my hands-on experience with network defense, SIEM monitoring, and data analysis. I enjoy transforming raw log data into meaningful insights for stronger security postures.</p>
-							</article>
+      /* ✨ Cinematic fade-in animation */
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-						<!-- Work -->
-							<article id="work">
-								<h2 class="major">Projects</h2>
-								
-								<h3>Azure SOC Lab</h3>
-								<p>Built a live honeynet in Azure, configured a Log Analytics Workspace, and connected it to Microsoft Sentinel to monitor 30,000+ security events. Created dashboards mapping failed logins and brute-force attempts across global IPs.</p>
+      .content, .logo, nav, footer {
+        opacity: 0;
+        animation: fadeInUp 1.8s ease-out forwards;
+      }
 
-								<h3>Hydra Brute-Force Demo</h3>
-								<p>Simulated password-guessing attacks using <strong>Hydra</strong> and <strong>John the Ripper</strong> to test account lockout policies and MFA effectiveness. Captured network activity using Wireshark and TCPDump for packet-level analysis.</p>
+      /* Staggered timing for realism */
+      .logo { animation-delay: 0.3s; }
+      .content { animation-delay: 0.8s; }
+      nav { animation-delay: 1.3s; }
+      footer { animation-delay: 2s; }
 
-								<h3>Relational Data Modeling Project</h3>
-								<p>Designed and validated a MySQL schema to ensure referential integrity across multi-entity systems. Strengthened SQL proficiency through query optimization and data validation techniques.</p>
-							</article>
+      /* Smooth text visibility over video */
+      body, p, h1, h2 {
+        color: #ffffff;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About Me</h2>
-								<p>I’m a Virginia Tech graduate (B.S. in Cybersecurity Management & Analytics, Cum Laude) passionate about defending digital environments through analytics and proactive risk management. My experience spans data validation, SIEM monitoring, and automation workflows in Azure and Python. I’m currently pursuing applied AI studies through Johns Hopkins University.</p>
-							</article>
+  <body class="is-preload">
 
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<p>Let’s connect! Whether you’d like to talk about cybersecurity, AI, or upcoming opportunities — I’d love to hear from you.</p>
-								<ul class="icons">
-									<li><a href="mailto:mahabaig@vt.edu" class="icon fa-envelope"><span class="label">Email</span></a></li>
-									<li><a href="https://www.linkedin.com/in/mahabaig" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/mahabaig" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Maha Baig. Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="html5up-dimension/assets/js/jquery.min.js"></script>
-			<script src="html5up-dimension/assets/js/browser.min.js"></script>
-			<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
-			<script src="html5up-dimension/assets/js/util.js"></script>
-			<script src="html5up-dimension/assets/js/main.js"></script>
-
-	</body>
-</html>
+    <!-- 🎥 Background Video -->
