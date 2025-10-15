@@ -134,16 +134,16 @@
       animation: fadeInText 1.5s ease 2.5s forwards;
     }
 
-    p {
+    #bio {
       font-size: 0.9rem;
       letter-spacing: 1.5px;
       line-height: 1.7;
       text-transform: uppercase;
-      opacity: 0.85;
       max-width: 800px;
       margin: 0 auto 2.5rem auto;
       opacity: 0;
-      animation: fadeInText 1.5s ease 3.2s forwards;
+      animation: fadeInText 1.2s ease 2.7s forwards;
+      white-space: pre-wrap;
     }
 
     .divider {
@@ -161,7 +161,7 @@
       gap: 12px;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeInText 1.5s ease 3.8s forwards;
+      animation: fadeInText 1.5s ease 4.2s forwards;
     }
 
     .buttons a {
@@ -199,6 +199,22 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* --- Blinking cursor --- */
+    #cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background-color: rgba(255, 255, 255, 0.7);
+      margin-left: 4px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
   </style>
 </head>
 
@@ -213,10 +229,7 @@
   <div class="center-wrapper">
     <div class="container">
       <h1>MAHA BAIG</h1>
-      <p>
-        COMPTIA SECURITY+ CERTIFIED CYBERSECURITY ANALYST PASSIONATE ABOUT THREAT DETECTION, INCIDENT RESPONSE, AND CLOUD SECURITY.  
-        EXPLORE MY PROJECTS AND LABS BELOW TO SEE HOW I TURN DATA INTO DEFENSE.
-      </p>
+      <p id="bio"></p><span id="cursor"></span>
       <div class="divider"></div>
       <div class="buttons">
         <a href="#overview">OVERVIEW</a>
@@ -232,6 +245,26 @@
   <script>
     window.addEventListener('load', () => {
       document.body.classList.remove('is-preload');
+
+      const bioText = "COMPTIA SECURITY+ CERTIFIED CYBERSECURITY ANALYST PASSIONATE ABOUT THREAT DETECTION, INCIDENT RESPONSE, AND CLOUD SECURITY. EXPLORE MY PROJECTS AND LABS BELOW TO SEE HOW I TURN DATA INTO DEFENSE.";
+      const bioElement = document.getElementById("bio");
+      const cursor = document.getElementById("cursor");
+
+      let index = 0;
+      const typingSpeed = 25; // milliseconds per character
+
+      function typeEffect() {
+        if (index < bioText.length) {
+          bioElement.textContent += bioText.charAt(index);
+          index++;
+          setTimeout(typeEffect, typingSpeed);
+        } else {
+          cursor.style.display = "none"; // hide cursor after finishing
+        }
+      }
+
+      // Start typing slightly after name animation
+      setTimeout(typeEffect, 2800);
     });
   </script>
 </body>
