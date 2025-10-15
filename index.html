@@ -1,8 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	Edited & personalized by Maha Baig
--->
 <html>
 <head>
   <title>Maha Baig | Cybersecurity Portfolio</title>
@@ -12,240 +8,203 @@
   <noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
 
   <style>
-    /* Background video */
+    /* Background video styling */
     #bg-video {
       position: fixed;
       right: 0;
       bottom: 0;
       min-width: 100%;
       min-height: 100%;
-      z-index: -1;
+      z-index: -2;
       object-fit: cover;
       filter: brightness(0.35);
     }
 
-    /* Typing animation */
-    .typing {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: .15em solid #fff;
-      animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    /* Overlay layer for readability */
+    #video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
-    @keyframes typing { from {width:0} to {width:100%} }
-    @keyframes blink-caret { from,to {border-color:transparent} 50% {border-color:#fff;} }
 
-    /* Project card grid */
+    /* Project cards */
     .project-card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform .3s ease, box-shadow .3s ease;
-      cursor: pointer;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1em;
       text-align: center;
-      margin-bottom: 2em;
+      transition: 0.3s;
+      cursor: pointer;
     }
     .project-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
     }
     .project-card img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .project-card h3 {
-      margin: .75em 0;
-      color: #fff;
-      font-size: 1.1em;
-      letter-spacing: 1px;
+      border-radius: 10px;
     }
 
-    /* Modal (walkthrough) */
+    /* Modal styling */
     .modal {
       display: none;
       position: fixed;
-      z-index: 2000;
-      padding-top: 70px;
+      z-index: 999;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      overflow-y: auto;
-      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
     }
     .modal-content {
-      margin: auto;
+      margin: 5% auto;
       padding: 20px;
-      width: 90%;
-      max-width: 900px;
-      color: #fff;
+      width: 80%;
+      color: white;
       text-align: center;
     }
+    .modal-content img {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 10px;
+    }
     .close {
-      color: #fff;
+      color: white;
       float: right;
-      font-size: 35px;
+      font-size: 30px;
       font-weight: bold;
-      margin-right: 20px;
       cursor: pointer;
     }
-    .close:hover { color: #f44; }
-
-    /* Screenshots and captions */
-    .screenshot img {
-      width: 100%;
-      max-width: 800px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.2);
-      margin: 20px 0 5px 0;
-    }
-    .caption {
-      font-size: 0.9em;
-      color: #ccc;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .modal-content h2 {
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 700;
+    .close:hover {
+      color: #00bfff;
     }
   </style>
 </head>
 
 <body class="is-preload">
 
-	<!-- Background Video -->
-	<video autoplay muted loop playsinline id="bg-video">
-	  <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
-	</video>
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
+  </video>
+  <div id="video-overlay"></div>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+  <!-- Wrapper -->
+  <div id="wrapper">
 
-		<!-- Header -->
-		<header id="header">
-			<div class="logo"><span class="icon fa-shield-alt"></span></div>
-			<div class="content">
-				<div class="inner">
-					<h1>Maha Baig</h1>
-					<p class="typing">Cybersecurity Analyst | Cloud Security | Threat Detection | AI in Cyber Defense</p>
-				</div>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="#about">About Me</a></li>
-					<li><a href="#work">Projects</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
+    <!-- Header -->
+    <header id="header">
+      <div class="logo">
+        <span class="icon fa-shield-alt"></span>
+      </div>
+      <div class="content">
+        <div class="inner">
+          <h1>Maha Baig</h1>
+          <p class="typing">Cybersecurity Analyst | Cloud Security | Threat Detection | AI in Cyber Defense</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">ABOUT ME</a></li>
+          <li><a href="#work">PROJECTS</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
 
-		<!-- Main -->
-		<div id="main">
+    <!-- Main -->
+    <div id="main">
 
-			<!-- About -->
-			<article id="about">
-				<h2 class="major">About Me</h2>
-				<span class="image main">
-				  <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig"
-				       style="width:180px;height:180px;border-radius:50%;object-fit:cover;
-				       display:block;margin:0 auto;border:3px solid white;" />
-				</span>
+      <!-- About -->
+      <article id="about">
+        <h2 class="major">ABOUT ME</h2>
+        <span class="image main"><img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" /></span>
+        <p><strong>WHO I AM</strong><br>
+        As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real and the mission is to protect people and data from them.</p>
 
-				<p><strong>WHO I AM</strong><br>
-				As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. 
-				Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real 
-				and the mission is to protect people and data from them.</p>
+        <p><strong>WHAT I DO</strong><br>
+        Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe from cyberattacks. I focus on <strong>threat detection, cloud security, and incident response</strong>, driven by <strong>curiosity, precision, and integrity</strong> — the same mix that turns protection into prevention.</p>
 
-				<p><strong>WHAT I DO</strong><br>
-				Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe 
-				from cyberattacks. I focus on <strong>threat detection, cloud security, and incident response</strong>, driven by 
-				<strong>curiosity, precision, and integrity</strong> — the same mix that turns protection into prevention.</p>
+        <p><strong>WHAT I’VE DONE</strong><br>
+        I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating <strong>Cum Laude</strong>, and hold a <a href="https://www.credly.com/badges/d5e955ae-8b9b-4d8e-84d5-c1af828b1d65/public_url" target="_blank"><strong>CompTIA Security+ certification</strong></a>. One of my main projects was building an <strong>Azure SOC Lab</strong>, where I analyzed over <strong>30,000 Sentinel events</strong>, identified brute-force attempts, and visualized attacker activity through geo-dashboards. I’ve also worked with <strong>Hydra</strong>, <strong>Wireshark</strong>, and <strong>Microsoft Sentinel</strong> to test, document, and strengthen system resilience. I’m currently expanding my foundation through <strong>Johns Hopkins University’s Applied Generative AI program</strong>, using <strong>Python</strong> to explore AI’s role in automating threat detection and data-driven defense.</p>
 
-				<p><strong>WHAT I’VE DONE</strong><br>
-				I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating 
-				<strong>Cum Laude</strong>, and hold a <strong><a href="https://www.credly.com/badges/d5e955ae-8b9b-4d8e-84d5-c1af828b1d65/public_url" target="_blank">CompTIA Security+ certification</a></strong>. 
-				One of my main projects was building an <strong>Azure SOC Lab</strong>, where I analyzed over <strong>30,000 Sentinel events</strong>, 
-				identified brute-force attempts, and visualized attacker activity through geo-dashboards. 
-				I’ve also worked with <strong>Hydra</strong>, <strong>Wireshark</strong>, and <strong>Microsoft Sentinel</strong> to test, document, and strengthen system resilience.  
-				Currently, I’m expanding my technical foundation through <strong>Johns Hopkins University’s Applied Generative AI program</strong>, 
-				using <strong>Python</strong> to explore how artificial intelligence can enhance security automation, detection, and decision-making.</p>
+        <p><strong>WHERE I’M HEADED</strong><br>
+        I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight with intelligent technology to build smarter, adaptive defenses. In many ways, I’m still that kid chasing the instinct to protect others — only now I get to do it in the world of cybersecurity.</p>
+      </article>
 
-				<p><strong>WHERE I’M HEADED</strong><br>
-				I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight 
-				with intelligent technology to build smarter, adaptive defenses. In many ways, I’m still that kid chasing the instinct to 
-				protect others — only now I get to do it in the world of cybersecurity.</p>
-			</article>
+      <!-- Projects -->
+      <article id="work">
+        <h2 class="major">PROJECTS</h2>
+        <div class="project-card" id="socLabCard">
+          <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
+          <h3>Azure SOC Lab</h3>
+          <p>Built a Microsoft Azure Sentinel SOC environment, analyzed 30,000+ events, and visualized global attacks in real time.</p>
+        </div>
+      </article>
 
-			<!-- Projects -->
-			<article id="work">
-				<h2 class="major">Projects</h2>
-				<div class="project-card" id="socCard">
-				  <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
-				  <h3>Azure SOC Lab</h3>
-				</div>
-			</article>
+      <!-- Modal for SOC Lab -->
+      <div id="socModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>AZURE SOC LAB WALKTHROUGH</h2>
+          <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
+          <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map">
+          <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary">
+          <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query">
+          <p>Through this project, I configured a Windows VM as a honeypot, monitored real-world login attempts via Microsoft Sentinel, and visualized attack origins using a geo-map dashboard. The exercise strengthened my skills in <strong>SIEM configuration, KQL querying,</strong> and <strong>threat intelligence analysis</strong>.</p>
+        </div>
+      </div>
 
-			<!-- Contact -->
-			<article id="contact">
-				<h2 class="major">Contact</h2>
-				<p>Let’s connect! I’m open to opportunities in cybersecurity, cloud defense, and data-driven security analytics.</p>
-				<ul class="icons">
-					<li><a href="https://github.com/mahabaig" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="https://www.linkedin.com/in/mahabaig" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="mailto:mahabaig@vt.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-			</article>
-		</div>
+      <!-- Contact -->
+      <article id="contact">
+        <h2 class="major">CONTACT</h2>
+        <p>Let’s connect! I’m open to opportunities in cybersecurity, cloud defense, and data-driven security analytics.</p>
+        <ul class="icons">
+          <li><a href="https://github.com/mahabaig" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+          <li><a href="https://www.linkedin.com/in/mahabaig" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+          <li><a href="mailto:mahabaig@vt.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+      </article>
+    </div>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<p class="copyright">&copy; 2025 Maha Baig. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.</p>
-		</footer>
-	</div>
+    <!-- Footer -->
+    <footer id="footer">
+      <p class="copyright">&copy; 2025 Maha Baig. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </footer>
+  </div>
 
-	<!-- Azure SOC Lab Modal -->
-	<div id="socModal" class="modal">
-	  <span class="close" id="closeModal">&times;</span>
-	  <div class="modal-content">
-	    <h2>AZURE SOC LAB WALKTHROUGH</h2>
-	    <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
+  <!-- Scripts -->
+  <script src="html5up-dimension/assets/js/jquery.min.js"></script>
+  <script src="html5up-dimension/assets/js/browser.min.js"></script>
+  <script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+  <script src="html5up-dimension/assets/js/util.js"></script>
+  <script src="html5up-dimension/assets/js/main.js"></script>
 
-	    <div class="screenshot">
-	      <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map" />
-	      <p class="caption">🔍 Windows VM Attack Map — Geo-visualization of 30 000+ login attempts across multiple countries.</p>
-	    </div>
+  <script>
+    // SOC Lab modal open/close
+    const socModal = document.getElementById("socModal");
+    const socLabCard = document.getElementById("socLabCard");
+    const closeBtn = document.getElementsByClassName("close")[0];
 
-	    <div class="screenshot">
-	      <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary" />
-	      <p class="caption">🧠 Event Viewer Summary — Breakdown of administrative and security log data from the honeypot VM.</p>
-	    </div>
+    socLabCard.onclick = function() {
+      socModal.style.display = "block";
+    }
 
-	    <div class="screenshot">
-	      <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query" />
-	      <p class="caption">💻 Log Analytics (KQL) — Querying and correlating events to identify brute-force and unauthorized login attempts.</p>
-	    </div>
+    closeBtn.onclick = function() {
+      socModal.style.display = "none";
+    }
 
-	    <p>Through this project, I configured a Windows VM as a honeypot, monitored real-world login attempts via Microsoft Sentinel, and visualized attack origins using a geo-map dashboard. The exercise strengthened my skills in <strong>SIEM configuration</strong>, <strong>KQL querying</strong>, and <strong>threat intelligence analysis</strong>.</p>
-	  </div>
-	</div>
-
-	<!-- Scripts -->
-	<script src="html5up-dimension/assets/js/jquery.min.js"></script>
-	<script src="html5up-dimension/assets/js/browser.min.js"></script>
-	<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
-	<script src="html5up-dimension/assets/js/util.js"></script>
-	<script src="html5up-dimension/assets/js/main.js"></script>
-
-	<script>
-	  const socCard = document.getElementById("socCard");
-	  const socModal = document.getElementById("socModal");
-	  const closeModal = document.getElementById("closeModal");
-
-	  socCard.onclick = () => socModal.style.display = "block";
-	  closeModal.onclick = () => socModal.style.display = "none";
-	  window.onclick = e => { if (e.target == socModal) socModal.style.display = "none"; };
-	</script>
+    window.onclick = function(event) {
+      if (event.target == socModal) {
+        socModal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
