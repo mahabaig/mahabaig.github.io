@@ -50,12 +50,19 @@
       border-radius: 50%;
       border: 4px solid white;
       object-fit: cover;
-      object-position: center 10%;
-      transition: transform 0.3s ease;
+      object-position: center center; /* centers face perfectly */
+      transform: scale(1.15); /* zooms slightly */
+      transition: transform 0.3s ease, opacity 1s ease;
+      opacity: 0;
+      animation: fadeInPhoto 1.2s ease forwards 0.4s;
+    }
+
+    @keyframes fadeInPhoto {
+      to { opacity: 1; }
     }
 
     .profile-pic:hover {
-      transform: scale(1.05);
+      transform: scale(1.2);
     }
 
     /* Subheaders only in uppercase */
