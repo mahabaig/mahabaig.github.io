@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="html5up-dimension/assets/css/main.css" />
   <noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
+
   <style>
     /* Background video */
     #bg-video {
@@ -23,18 +24,29 @@
       filter: brightness(0.35);
     }
 
-    /* Project Card Styling */
+    /* Typing animation */
+    .typing {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: .15em solid #fff;
+      animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing { from {width:0} to {width:100%} }
+    @keyframes blink-caret { from,to {border-color:transparent} 50% {border-color:#fff;} }
+
+    /* Project card grid */
     .project-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.05);
       border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
       cursor: pointer;
       text-align: center;
+      margin-bottom: 2em;
     }
     .project-card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
     }
     .project-card img {
       width: 100%;
@@ -42,13 +54,13 @@
       object-fit: cover;
     }
     .project-card h3 {
-      margin: 0.75em 0;
+      margin: .75em 0;
       color: #fff;
       font-size: 1.1em;
       letter-spacing: 1px;
     }
 
-    /* Modal (for walkthrough) */
+    /* Modal (walkthrough) */
     .modal {
       display: none;
       position: fixed;
@@ -59,7 +71,7 @@
       width: 100%;
       height: 100%;
       overflow-y: auto;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0,0,0,0.9);
     }
     .modal-content {
       margin: auto;
@@ -69,12 +81,6 @@
       color: #fff;
       text-align: center;
     }
-    .modal-content img {
-      width: 100%;
-      margin: 15px 0;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
     .close {
       color: #fff;
       float: right;
@@ -83,8 +89,26 @@
       margin-right: 20px;
       cursor: pointer;
     }
-    .close:hover {
-      color: #f44;
+    .close:hover { color: #f44; }
+
+    /* Screenshots and captions */
+    .screenshot img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      margin: 20px 0 5px 0;
+    }
+    .caption {
+      font-size: 0.9em;
+      color: #ccc;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .modal-content h2 {
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -93,7 +117,7 @@
 
 	<!-- Background Video -->
 	<video autoplay muted loop playsinline id="bg-video">
-		<source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
+	  <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
 	</video>
 
 	<!-- Wrapper -->
@@ -101,9 +125,7 @@
 
 		<!-- Header -->
 		<header id="header">
-			<div class="logo">
-				<span class="icon fa-shield-alt"></span>
-			</div>
+			<div class="logo"><span class="icon fa-shield-alt"></span></div>
 			<div class="content">
 				<div class="inner">
 					<h1>Maha Baig</h1>
@@ -125,7 +147,11 @@
 			<!-- About -->
 			<article id="about">
 				<h2 class="major">About Me</h2>
-				<span class="image main"><img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto; border: 3px solid white;" /></span>
+				<span class="image main">
+				  <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig"
+				       style="width:180px;height:180px;border-radius:50%;object-fit:cover;
+				       display:block;margin:0 auto;border:3px solid white;" />
+				</span>
 
 				<p><strong>WHO I AM</strong><br>
 				As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. 
@@ -156,8 +182,8 @@
 			<article id="work">
 				<h2 class="major">Projects</h2>
 				<div class="project-card" id="socCard">
-					<img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
-					<h3>Azure SOC Lab</h3>
+				  <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
+				  <h3>Azure SOC Lab</h3>
 				</div>
 			</article>
 
@@ -179,19 +205,30 @@
 		</footer>
 	</div>
 
-	<!-- Modal for Azure SOC Lab -->
+	<!-- Azure SOC Lab Modal -->
 	<div id="socModal" class="modal">
-		<span class="close" id="closeModal">&times;</span>
-		<div class="modal-content">
-			<h2>Azure SOC Lab Walkthrough</h2>
-			<p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
+	  <span class="close" id="closeModal">&times;</span>
+	  <div class="modal-content">
+	    <h2>AZURE SOC LAB WALKTHROUGH</h2>
+	    <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
 
-			<img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map">
-			<img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary">
-			<img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query">
+	    <div class="screenshot">
+	      <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map" />
+	      <p class="caption">🔍 Windows VM Attack Map — Geo-visualization of 30 000+ login attempts across multiple countries.</p>
+	    </div>
 
-			<p>Through this project, I configured a Windows VM as a honeypot, monitored real-world login attempts via Microsoft Sentinel, and visualized attack origins using a geo-map dashboard. The exercise strengthened my skills in <strong>SIEM configuration</strong>, <strong>KQL querying</strong>, and <strong>threat intelligence analysis</strong>.</p>
-		</div>
+	    <div class="screenshot">
+	      <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary" />
+	      <p class="caption">🧠 Event Viewer Summary — Breakdown of administrative and security log data from the honeypot VM.</p>
+	    </div>
+
+	    <div class="screenshot">
+	      <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query" />
+	      <p class="caption">💻 Log Analytics (KQL) — Querying and correlating events to identify brute-force and unauthorized login attempts.</p>
+	    </div>
+
+	    <p>Through this project, I configured a Windows VM as a honeypot, monitored real-world login attempts via Microsoft Sentinel, and visualized attack origins using a geo-map dashboard. The exercise strengthened my skills in <strong>SIEM configuration</strong>, <strong>KQL querying</strong>, and <strong>threat intelligence analysis</strong>.</p>
+	  </div>
 	</div>
 
 	<!-- Scripts -->
@@ -202,25 +239,13 @@
 	<script src="html5up-dimension/assets/js/main.js"></script>
 
 	<script>
-	  // Modal behavior
 	  const socCard = document.getElementById("socCard");
 	  const socModal = document.getElementById("socModal");
 	  const closeModal = document.getElementById("closeModal");
 
-	  socCard.onclick = function() {
-	    socModal.style.display = "block";
-	  }
-
-	  closeModal.onclick = function() {
-	    socModal.style.display = "none";
-	  }
-
-	  window.onclick = function(event) {
-	    if (event.target == socModal) {
-	      socModal.style.display = "none";
-	    }
-	  }
+	  socCard.onclick = () => socModal.style.display = "block";
+	  closeModal.onclick = () => socModal.style.display = "none";
+	  window.onclick = e => { if (e.target == socModal) socModal.style.display = "none"; };
 	</script>
-
 </body>
 </html>
