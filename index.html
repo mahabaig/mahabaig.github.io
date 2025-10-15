@@ -55,7 +55,7 @@
 
     body {
       opacity: 0;
-      animation: fadeInBody 2s ease forwards;
+      animation: fadeInBody 1.5s ease forwards;
     }
 
     @keyframes fadeInBody {
@@ -73,7 +73,7 @@
       padding: 0 1.5rem;
     }
 
-    /* --- Container lines --- */
+    /* --- Container with animated lines --- */
     .container {
       max-width: 900px;
       width: 100%;
@@ -85,30 +85,30 @@
     .container::after {
       content: '';
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 50%;
+      right: 50%;
       height: 1px;
       background: rgba(255, 255, 255, 0.25);
-      width: 0;
-      animation: lineExpand 2.5s ease forwards;
+      opacity: 0;
+      animation: lineExpand 2s ease forwards;
     }
 
     .container::before {
       top: 0;
-      animation-delay: 0.5s;
+      animation-delay: 0.2s;
     }
 
     .container::after {
       bottom: 0;
-      animation-delay: 0.5s;
+      animation-delay: 0.2s;
     }
 
     @keyframes lineExpand {
-      from { width: 0; left: 50%; right: 50%; opacity: 0; }
-      to { width: 100%; left: 0; right: 0; opacity: 1; }
+      0% { width: 0; left: 50%; right: 50%; opacity: 0; }
+      100% { width: 100%; left: 0; right: 0; opacity: 1; }
     }
 
-    /* --- Text content --- */
+    /* --- Text --- */
     h1 {
       font-size: 3.8rem;
       letter-spacing: 5px;
@@ -117,7 +117,8 @@
       margin-bottom: 1.5rem;
       text-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
       opacity: 0;
-      animation: fadeInText 2s ease 1s forwards;
+      animation: fadeInText 1.5s ease forwards;
+      animation-delay: 2.2s; /* happens right after lines finish */
     }
 
     p {
@@ -128,7 +129,8 @@
       opacity: 0.85;
       max-width: 800px;
       margin: 0 auto 2.5rem auto;
-      animation: fadeInText 2s ease 1.5s forwards;
+      animation: fadeInText 1.5s ease forwards;
+      animation-delay: 3.3s;
     }
 
     .divider {
@@ -137,7 +139,8 @@
       background: rgba(255, 255, 255, 0.25);
       margin: 1.5rem auto;
       opacity: 0;
-      animation: fadeInText 2s ease 2s forwards;
+      animation: fadeInText 1.5s ease forwards;
+      animation-delay: 3.6s;
     }
 
     .buttons {
@@ -146,7 +149,8 @@
       gap: 12px;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeInText 2s ease 2.3s forwards;
+      animation: fadeInText 1.5s ease forwards;
+      animation-delay: 4s;
     }
 
     .buttons a {
