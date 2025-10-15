@@ -59,7 +59,7 @@
       color: #fff;
     }
 
-    /* Profile image styling */
+    /* Profile image styling (zoomed with animation) */
     .about-photo {
       display: block;
       margin: 0 auto 2em auto;
@@ -69,6 +69,13 @@
       border: 4px solid #fff;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
       object-fit: cover;
+      object-position: center 30%;
+      animation: zoomIn 8s ease-out forwards;
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(1.0); }
+      100% { transform: scale(1.15); }
     }
 
     /* Center headings for consistency */
@@ -144,6 +151,7 @@
         and visualized attacker activity through geo-dashboards. I’ve also worked with <strong>Hydra</strong>, 
         <strong>Wireshark</strong>, and <strong>Microsoft Sentinel</strong> to test, document, and strengthen system resilience.  
         Currently, I’m expanding my technical foundation through <strong>Johns Hopkins University’s Applied Generative AI program</strong>, 
+        where I use <strong>Python</strong> for hands-on projects in <strong>AI automation, model evaluation, and ethical AI applications</strong> — 
         exploring how artificial intelligence can enhance security automation, detection, and decision-making.</p>
 
         <p><strong>Where I’m Headed</strong><br>
