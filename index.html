@@ -10,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="html5up-dimension/assets/css/main.css" />
   <noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
-
   <style>
     /* Background video styling */
     #bg-video {
@@ -30,12 +29,6 @@
       white-space: nowrap;
       border-right: .15em solid #fff;
       animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
-      display: inline-block;
-      margin: 0 auto;
-      font-family: "Source Sans Pro", sans-serif; /* matches landing font */
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #ffffff;
     }
 
     @keyframes typing {
@@ -48,49 +41,28 @@
       50% { border-color: #fff; }
     }
 
-    /* Center intro text */
-    .content .inner {
-      text-align: center;
-    }
-
-    /* Keep font consistent site-wide */
-    body, h1, h2, h3, p, li, strong {
-      font-family: "Source Sans Pro", sans-serif;
-      color: #fff;
-    }
-
-    /* Subheader style (uppercase, spaced) */
-    .subheader {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: #ffffff;
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-    }
-
-    /* Profile image styling (zoomed with animation) */
-    .about-photo {
+    /* Profile Image */
+    .profile-pic {
       display: block;
-      margin: 0 auto 2em auto;
-      width: 180px;
-      height: 180px;
+      margin: 0 auto 1.5em auto;
+      width: 190px;
+      height: 190px;
       border-radius: 50%;
-      border: 4px solid #fff;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      border: 4px solid white;
       object-fit: cover;
-      object-position: center 30%;
-      animation: zoomIn 8s ease-out forwards;
+      object-position: center 15%;
+      transition: transform 0.3s ease;
     }
 
-    @keyframes zoomIn {
-      0% { transform: scale(1.0); }
-      100% { transform: scale(1.15); }
+    .profile-pic:hover {
+      transform: scale(1.05);
     }
 
-    /* Center headings for consistency */
-    h2.major {
-      text-align: center;
+    /* Ensure consistent font for all subheaders */
+    article h2.major, article p strong {
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -99,7 +71,7 @@
 
   <!-- Background Video -->
   <video autoplay muted loop playsinline id="bg-video">
-    <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
+    <source src="pexels-code-loop.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
@@ -140,32 +112,38 @@
       <!-- About Section -->
       <article id="about">
         <h2 class="major">About Me</h2>
+        <img src="images/maha-baig.jpg" alt="Maha Baig" class="profile-pic" />
 
-        <!-- Profile Photo -->
-        <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="about-photo" />
-
-        <p class="subheader">Who I Am</p>
-        <p>As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. 
+        <p><strong>WHO I AM</strong><br>
+        As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. 
         Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real 
         and the mission is to protect people and data from them.</p>
 
-        <p class="subheader">What I Do</p>
-        <p>Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe 
+        <p><strong>WHAT I DO</strong><br>
+        Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe 
         from cyberattacks. I focus on <strong>threat detection, cloud security, and incident response</strong>, driven by 
         <strong>curiosity, precision, and integrity</strong> — the same mix that turns protection into prevention.</p>
 
-        <p class="subheader">What I’ve Done</p>
-        <p>I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating 
-        <strong>Cum Laude</strong>, and hold a <strong>CompTIA Security+ certification</strong>. One of my main projects was 
-        building an <strong>Azure SOC Lab</strong>, where I analyzed over <strong>30,000 Sentinel events</strong>, identified brute-force attempts, 
+        <p><strong>WHAT I’VE DONE</strong><br>
+        I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating 
+        <strong>Cum Laude</strong>, and hold a 
+        <strong>
+          <a href="https://www.credly.com/badges/d5e955ae-8b9b-4d8e-84d5-c1af828b1d65/public_url" 
+             target="_blank" 
+             style="color:#66ccff; text-decoration:none;">
+             CompTIA Security+ certification <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i>
+          </a>
+        </strong>.
+        One of my main projects was building an <strong>Azure SOC Lab</strong>, where I analyzed over 
+        <strong>30,000 Sentinel events</strong>, identified brute-force attempts, 
         and visualized attacker activity through geo-dashboards. I’ve also worked with <strong>Hydra</strong>, 
         <strong>Wireshark</strong>, and <strong>Microsoft Sentinel</strong> to test, document, and strengthen system resilience.  
-        Currently, I’m expanding my technical foundation through <strong>Johns Hopkins University’s Applied Generative AI program</strong>, 
-        where I use <strong>Python</strong> for hands-on projects in <strong>AI automation, model evaluation, and ethical AI applications</strong> — 
-        exploring how artificial intelligence can enhance security automation, detection, and decision-making.</p>
+        Currently, I’m expanding my technical foundation through 
+        <strong>Johns Hopkins University’s Applied Generative AI program</strong>, 
+        where I apply <strong>Python</strong> to explore how artificial intelligence can enhance security automation, detection, and decision-making.</p>
 
-        <p class="subheader">Where I’m Headed</p>
-        <p>I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight 
+        <p><strong>WHERE I’M HEADED</strong><br>
+        I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight 
         with intelligent technology to build smarter, adaptive defenses. In many ways, I’m still that kid chasing the instinct to 
         protect others — only now I get to do it in the world of cybersecurity.</p>
       </article>
