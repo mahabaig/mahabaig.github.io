@@ -14,12 +14,14 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
       font-family: 'Montserrat', sans-serif;
+      background: #000;
       color: #fff;
       text-align: center;
-      overflow: hidden;
-      background: #000;
       opacity: 0;
       animation: fadeIn 2s ease forwards;
     }
@@ -52,21 +54,26 @@
       z-index: -1;
     }
 
-    /* Layout container */
+    /* Perfectly centered content */
+    .center-wrapper {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
     .container {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 90%;
       max-width: 900px;
-      margin: 0 auto;
-      padding: 40px;
+      width: 100%;
+      padding: 40px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.25);
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       letter-spacing: 5px;
       text-transform: uppercase;
       font-weight: 700;
@@ -116,8 +123,8 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 25px;
+      position: fixed;
+      bottom: 20px;
       width: 100%;
       text-align: center;
       font-size: 0.75rem;
@@ -141,29 +148,5 @@
 </head>
 
 <body>
-  <!-- Background video -->
   <video autoplay muted loop playsinline id="bg-video">
-    <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <div id="overlay"></div>
-
-  <div class="container">
-    <h1>MAHA BAIG</h1>
-    <p>
-      COMPTIA SECURITY+ CERTIFIED CYBERSECURITY ANALYST PASSIONATE ABOUT THREAT DETECTION, INCIDENT RESPONSE, AND CLOUD SECURITY.  
-      EXPLORE MY PROJECTS AND LABS BELOW TO SEE HOW I TURN DATA INTO DEFENSE.
-    </p>
-    <div class="divider"></div>
-    <div class="buttons">
-      <a href="#overview">OVERVIEW</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#about">ABOUT ME</a>
-      <a href="#contact">CONTACT</a>
-    </div>
-  </div>
-
-  <footer>© Maha Baig. Design by <a href="https://html5up.net">HTML5 UP</a>.</footer>
-</body>
-</html>
+    <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp
