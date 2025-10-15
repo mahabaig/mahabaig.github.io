@@ -22,16 +22,9 @@
       background: #000;
       color: #fff;
       text-align: center;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Background video */
+    /* --- Background video --- */
     #bg-video {
       position: fixed;
       top: 0;
@@ -43,7 +36,7 @@
       filter: brightness(0.55) contrast(1.2);
     }
 
-    /* Blue overlay for depth */
+    /* --- Overlay tint --- */
     #overlay {
       position: fixed;
       top: 0;
@@ -54,7 +47,23 @@
       z-index: -1;
     }
 
-    /* Perfectly centered content */
+    /* --- Animation setup --- */
+    body.is-preload * {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    body {
+      opacity: 0;
+      animation: fadeInBody 2s ease forwards;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* --- Centered layout --- */
     .center-wrapper {
       height: 100vh;
       display: flex;
@@ -64,14 +73,42 @@
       padding: 0 1.5rem;
     }
 
+    /* --- Container lines --- */
     .container {
       max-width: 900px;
       width: 100%;
-      padding: 40px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.25);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 60px 0;
+      position: relative;
     }
 
+    .container::before,
+    .container::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.25);
+      width: 0;
+      animation: lineExpand 2.5s ease forwards;
+    }
+
+    .container::before {
+      top: 0;
+      animation-delay: 0.5s;
+    }
+
+    .container::after {
+      bottom: 0;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes lineExpand {
+      from { width: 0; left: 50%; right: 50%; opacity: 0; }
+      to { width: 100%; left: 0; right: 0; opacity: 1; }
+    }
+
+    /* --- Text content --- */
     h1 {
       font-size: 3.8rem;
       letter-spacing: 5px;
@@ -79,6 +116,8 @@
       font-weight: 700;
       margin-bottom: 1.5rem;
       text-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
+      opacity: 0;
+      animation: fadeInText 2s ease 1s forwards;
     }
 
     p {
@@ -86,9 +125,10 @@
       letter-spacing: 1.5px;
       line-height: 1.7;
       text-transform: uppercase;
-      opacity: 0.9;
+      opacity: 0.85;
       max-width: 800px;
       margin: 0 auto 2.5rem auto;
+      animation: fadeInText 2s ease 1.5s forwards;
     }
 
     .divider {
@@ -96,6 +136,8 @@
       height: 1px;
       background: rgba(255, 255, 255, 0.25);
       margin: 1.5rem auto;
+      opacity: 0;
+      animation: fadeInText 2s ease 2s forwards;
     }
 
     .buttons {
@@ -103,6 +145,8 @@
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInText 2s ease 2.3s forwards;
     }
 
     .buttons a {
@@ -136,20 +180,16 @@
       text-decoration: none;
     }
 
-    @keyframes flicker {
-      0%, 100% { opacity: 0.97; }
-      50% { opacity: 1; }
-    }
-
-    body {
-      animation: fadeIn 2s ease forwards, flicker 4s infinite ease-in-out;
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
-<body>
+<body class="is-preload">
   <video autoplay muted loop playsinline id="bg-video">
-    <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
+    <source src="html5up-dimension/html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
@@ -173,5 +213,12 @@
   </div>
 
   <footer>© Maha Baig. Design by <a href="https://html5up.net">HTML5 UP</a>.</footer>
+
+  <script>
+    // Removes preload class after initial animations
+    window.addEventListener('load', () => {
+      document.body.classList.remove('is-preload');
+    });
+  </script>
 </body>
 </html>
