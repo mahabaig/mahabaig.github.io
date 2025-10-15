@@ -50,7 +50,7 @@
       border-radius: 50%;
       border: 4px solid white;
       object-fit: cover;
-      object-position: center 15%;
+      object-position: center 10%;
       transition: transform 0.3s ease;
     }
 
@@ -58,11 +58,13 @@
       transform: scale(1.05);
     }
 
-    /* Ensure consistent font for all subheaders */
-    article h2.major, article p strong {
-      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    /* Subheaders only in uppercase */
+    .subheader {
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: 0.5em;
+      color: #fff;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -71,7 +73,7 @@
 
   <!-- Background Video -->
   <video autoplay muted loop playsinline id="bg-video">
-    <source src="pexels-code-loop.mp4" type="video/mp4" />
+    <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
@@ -105,26 +107,26 @@
       <!-- Intro -->
       <article id="intro">
         <h2 class="major">Intro</h2>
-        <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+        <span class="image main"><img src="html5up-dimension/images/pic01.jpg" alt="" /></span>
         <p>Welcome to my cybersecurity portfolio. I’m passionate about protecting systems, data, and people in an evolving digital world. Explore my projects, learn about my journey, and see how I approach defense through analytics, curiosity, and continuous learning.</p>
       </article>
 
       <!-- About Section -->
       <article id="about">
         <h2 class="major">About Me</h2>
-        <img src="images/maha-baig.jpg" alt="Maha Baig" class="profile-pic" />
+        <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="profile-pic" />
 
-        <p><strong>WHO I AM</strong><br>
+        <p><span class="subheader">Who I Am</span><br>
         As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. 
         Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real 
         and the mission is to protect people and data from them.</p>
 
-        <p><strong>WHAT I DO</strong><br>
+        <p><span class="subheader">What I Do</span><br>
         Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe 
         from cyberattacks. I focus on <strong>threat detection, cloud security, and incident response</strong>, driven by 
         <strong>curiosity, precision, and integrity</strong> — the same mix that turns protection into prevention.</p>
 
-        <p><strong>WHAT I’VE DONE</strong><br>
+        <p><span class="subheader">What I’ve Done</span><br>
         I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating 
         <strong>Cum Laude</strong>, and hold a 
         <strong>
@@ -142,7 +144,7 @@
         <strong>Johns Hopkins University’s Applied Generative AI program</strong>, 
         where I apply <strong>Python</strong> to explore how artificial intelligence can enhance security automation, detection, and decision-making.</p>
 
-        <p><strong>WHERE I’M HEADED</strong><br>
+        <p><span class="subheader">Where I’m Headed</span><br>
         I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight 
         with intelligent technology to build smarter, adaptive defenses. In many ways, I’m still that kid chasing the instinct to 
         protect others — only now I get to do it in the world of cybersecurity.</p>
@@ -151,7 +153,7 @@
       <!-- Projects -->
       <article id="work">
         <h2 class="major">Projects</h2>
-        <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+        <span class="image main"><img src="html5up-dimension/images/pic02.jpg" alt="" /></span>
         <p>Here you’ll find projects that reflect my technical growth — from my Azure SOC Lab and Hydra brute-force simulation 
         to ongoing experiments with AI-enhanced threat detection and network monitoring.</p>
       </article>
