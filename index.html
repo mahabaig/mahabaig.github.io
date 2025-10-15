@@ -144,8 +144,8 @@
       opacity: 0;
       animation: fadeInText 1.2s ease 2.7s forwards;
       white-space: pre-wrap;
-      display: inline-block;
-      text-align: left;
+      text-align: center;
+      display: block;
     }
 
     .divider {
@@ -201,22 +201,6 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* --- Blinking cursor next to text --- */
-    #cursor {
-      display: inline-block;
-      width: 8px;
-      height: 1em;
-      background-color: rgba(255, 255, 255, 0.8);
-      margin-left: 4px;
-      vertical-align: bottom;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      50.01%, 100% { opacity: 0; }
-    }
   </style>
 </head>
 
@@ -231,7 +215,7 @@
   <div class="center-wrapper">
     <div class="container">
       <h1>MAHA BAIG</h1>
-      <p id="bio"></p><span id="cursor"></span>
+      <p id="bio"></p>
       <div class="divider"></div>
       <div class="buttons">
         <a href="#overview">OVERVIEW</a>
@@ -250,22 +234,19 @@
 
       const bioText = "COMPTIA SECURITY+ CERTIFIED CYBERSECURITY ANALYST PASSIONATE ABOUT THREAT DETECTION, INCIDENT RESPONSE, AND CLOUD SECURITY. EXPLORE MY PROJECTS AND LABS BELOW TO SEE HOW I TURN DATA INTO DEFENSE.";
       const bioElement = document.getElementById("bio");
-      const cursor = document.getElementById("cursor");
 
       let index = 0;
-      const typingSpeed = 45; // slower, more human pace (ms per character)
+      const typingSpeed = 45; // realistic typing speed
 
       function typeEffect() {
         if (index < bioText.length) {
           bioElement.textContent += bioText.charAt(index);
           index++;
           setTimeout(typeEffect, typingSpeed);
-        } else {
-          cursor.style.display = "none"; // hide cursor when done typing
         }
       }
 
-      // Start typing slightly after name appears
+      // Start typing after the name fades in
       setTimeout(typeEffect, 2900);
     });
   </script>
