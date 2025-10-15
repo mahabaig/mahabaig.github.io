@@ -144,6 +144,8 @@
       opacity: 0;
       animation: fadeInText 1.2s ease 2.7s forwards;
       white-space: pre-wrap;
+      display: inline-block;
+      text-align: left;
     }
 
     .divider {
@@ -200,15 +202,15 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Blinking cursor --- */
+    /* --- Blinking cursor next to text --- */
     #cursor {
       display: inline-block;
       width: 8px;
       height: 1em;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.8);
       margin-left: 4px;
+      vertical-align: bottom;
       animation: blink 1s infinite;
-      vertical-align: middle;
     }
 
     @keyframes blink {
@@ -251,7 +253,7 @@
       const cursor = document.getElementById("cursor");
 
       let index = 0;
-      const typingSpeed = 25; // milliseconds per character
+      const typingSpeed = 45; // slower, more human pace (ms per character)
 
       function typeEffect() {
         if (index < bioText.length) {
@@ -259,12 +261,12 @@
           index++;
           setTimeout(typeEffect, typingSpeed);
         } else {
-          cursor.style.display = "none"; // hide cursor after finishing
+          cursor.style.display = "none"; // hide cursor when done typing
         }
       }
 
-      // Start typing slightly after name animation
-      setTimeout(typeEffect, 2800);
+      // Start typing slightly after name appears
+      setTimeout(typeEffect, 2900);
     });
   </script>
 </body>
