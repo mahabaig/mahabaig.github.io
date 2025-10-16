@@ -17,7 +17,7 @@
       min-height: 100%;
       z-index: -2;
       object-fit: cover;
-      filter: brightness(0.35);
+      filter: brightness(0.55); /* brighter video */
     }
 
     /* Overlay for readability */
@@ -27,27 +27,27 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.3); /* lighter overlay */
       z-index: -1;
     }
 
-    /* Blue-glow header aesthetic */
+    /* Teal-glow header aesthetic */
     #header h1 {
       font-size: 4.5em;
       color: #fff;
       text-shadow:
-        0 0 10px #2196f3,
-        0 0 20px #2196f3,
-        0 0 40px #0d47a1;
+        0 0 10px #00CAB1,
+        0 0 25px #00CAB1,
+        0 0 45px #00786D;
       letter-spacing: 1.5px;
       transition: all 0.4s ease;
     }
 
     #header h1:hover {
       text-shadow:
-        0 0 20px #64b5f6,
-        0 0 40px #2196f3,
-        0 0 60px #1565c0;
+        0 0 20px #00EFD9,
+        0 0 40px #00CAB1,
+        0 0 60px #009C8A;
       transform: scale(1.02);
     }
 
@@ -71,21 +71,24 @@
 
     .profile-image:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 45px rgba(0, 191, 255, 0.6);
+      box-shadow: 0 0 45px rgba(0, 202, 177, 0.6);
     }
 
-    /* Project cards */
+    /* Project card smaller layout */
     .project-card {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 8px;
-      margin: 1.5em 0;
+      margin: 1.5em auto;
       cursor: pointer;
       transition: 0.3s;
+      width: 70%;
+      max-width: 600px;
+      padding-bottom: 1em;
     }
 
     .project-card img {
       width: 100%;
-      border-radius: 8px;
+      border-radius: 8px 8px 0 0;
       display: block;
     }
 
@@ -138,7 +141,7 @@
     }
 
     .close:hover {
-      color: #00bfff;
+      color: #00CAB1;
     }
 
     @keyframes fadeIn {
@@ -216,7 +219,7 @@
       <div id="socModal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <h2>AZURE SOC LAB WALKTHROUGH</h2>
+          <h2 style="text-shadow:0 0 15px #00CAB1;">AZURE SOC LAB WALKTHROUGH</h2>
           <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
           <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map">
           <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary">
@@ -257,20 +260,17 @@
     const socLabCard = document.getElementById("socLabCard");
     const closeBtn = socModal.querySelector(".close");
 
-    // Open modal
     socLabCard.onclick = function() {
       socModal.style.display = "block";
       document.body.style.overflow = "hidden";
     }
 
-    // Close modal and return to home
     closeBtn.onclick = function() {
       socModal.style.display = "none";
       document.body.style.overflow = "auto";
       window.location.hash = "";
     }
 
-    // Click outside modal closes it
     window.onclick = function(event) {
       if (event.target == socModal) {
         socModal.style.display = "none";
@@ -279,7 +279,6 @@
       }
     }
 
-    // Ensure Projects tab always shows card
     window.addEventListener("hashchange", () => {
       if (window.location.hash === "#work") {
         socModal.style.display = "none";
