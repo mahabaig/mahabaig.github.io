@@ -75,32 +75,43 @@
     }
 
     /* Project card smaller layout */
-    .project-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      margin: 1.5em auto;
-      cursor: pointer;
-      transition: 0.3s;
-      width: 70%;
-      max-width: 600px;
-      padding-bottom: 1em;
-    }
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin: 1.5em auto;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 70%;
+  max-width: 600px;
+  padding: 1.2em; /* adds spacing inside the card */
+  text-align: center; /* centers title + description */
+}
 
-    .project-card img {
-      width: 100%;
-      border-radius: 8px 8px 0 0;
-      display: block;
-    }
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 1em; /* separates image and text */
+}
 
-    .project-card h3 {
-      margin-top: 0.8em;
-      font-weight: 600;
-    }
+.project-card h3 {
+  margin: 0.5em 0 0.4em 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255, 255, 255, 0.08);
-    }
+.project-card p {
+  margin: 0 auto;
+  width: 90%;
+  line-height: 1.5em;
+  color: #ccc;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 
     /* Modal styling */
     .modal {
