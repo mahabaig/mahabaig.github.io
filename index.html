@@ -8,7 +8,7 @@
   <noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
 
   <style>
-    /* Background video styling */
+    /* Background video */
     #bg-video {
       position: fixed;
       right: 0;
@@ -20,7 +20,7 @@
       filter: brightness(0.35);
     }
 
-    /* Overlay layer for readability */
+    /* Overlay for readability */
     #video-overlay {
       position: fixed;
       top: 0;
@@ -31,29 +31,30 @@
       z-index: -1;
     }
 
-    /* Profile image (About Me) */
+    /* Profile image */
     .profile-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 1.5em;
+      margin-bottom: 2em;
     }
 
     .profile-image {
-      width: 180px;
-      height: 180px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      border: 4px solid white;
+      border: 5px solid white;
       object-fit: cover;
-      object-position: 50% 45%; /* adjusts crop for better centering */
+      object-position: 50% 38%;
       box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .profile-image:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
     }
 
-    /* Project cards - preserve original HTML5UP sizing */
+    /* Project cards */
     .project-card {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 8px;
@@ -61,15 +62,18 @@
       cursor: pointer;
       transition: 0.3s;
     }
+
     .project-card img {
       width: 100%;
       border-radius: 8px;
       display: block;
     }
+
     .project-card h3 {
       margin-top: 0.8em;
       font-weight: 600;
     }
+
     .project-card:hover {
       transform: translateY(-4px);
       background: rgba(255, 255, 255, 0.08);
@@ -88,6 +92,7 @@
       background-color: rgba(0, 0, 0, 0.9);
       animation: fadeIn 0.3s ease;
     }
+
     .modal-content {
       margin: 4% auto;
       padding: 20px;
@@ -96,12 +101,14 @@
       text-align: center;
       max-width: 900px;
     }
+
     .modal-content img {
       width: 100%;
       margin-top: 15px;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
+
     .close {
       color: white;
       float: right;
@@ -109,9 +116,11 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     .close:hover {
       color: #00bfff;
     }
+
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
@@ -235,14 +244,14 @@
     closeBtn.onclick = function() {
       socModal.style.display = "none";
       document.body.style.overflow = "auto";
-      window.location.hash = "#work"; // Return to Projects tab
+      window.location.hash = ""; // Return to home page
     }
 
     window.onclick = function(event) {
       if (event.target == socModal) {
         socModal.style.display = "none";
         document.body.style.overflow = "auto";
-        window.location.hash = "#work";
+        window.location.hash = "";
       }
     }
   </script>
