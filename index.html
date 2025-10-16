@@ -31,23 +31,48 @@
       z-index: -1;
     }
 
-    /* Project cards */
+    /* Profile image (About Me) */
+    .profile-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5em;
+    }
+
+    .profile-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      object-position: 50% 45%; /* adjusts crop for better centering */
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.03);
+    }
+
+    /* Project cards - preserve original HTML5UP sizing */
     .project-card {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 1em;
-      text-align: center;
-      transition: 0.3s;
+      border-radius: 8px;
+      margin: 1.5em 0;
       cursor: pointer;
-    }
-    .project-card:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px);
+      transition: 0.3s;
     }
     .project-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 8px;
+      display: block;
+    }
+    .project-card h3 {
+      margin-top: 0.8em;
+      font-weight: 600;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     /* Modal styling */
@@ -59,20 +84,23 @@
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
+      overflow-y: auto;
       background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s ease;
     }
     .modal-content {
-      margin: 5% auto;
+      margin: 4% auto;
       padding: 20px;
-      width: 80%;
+      width: 85%;
       color: white;
       text-align: center;
+      max-width: 900px;
     }
     .modal-content img {
       width: 100%;
       margin-top: 15px;
       border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     .close {
       color: white;
@@ -83,6 +111,10 @@
     }
     .close:hover {
       color: #00bfff;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
@@ -124,7 +156,10 @@
       <!-- About -->
       <article id="about">
         <h2 class="major">ABOUT ME</h2>
-        <span class="image main"><img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" /></span>
+        <div class="profile-container">
+          <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="profile-image" />
+        </div>
+
         <p><strong>WHO I AM</strong><br>
         As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real and the mission is to protect people and data from them.</p>
 
@@ -187,22 +222,27 @@
   <script src="html5up-dimension/assets/js/main.js"></script>
 
   <script>
-    // SOC Lab modal open/close
+    // SOC Lab modal open/close behavior
     const socModal = document.getElementById("socModal");
     const socLabCard = document.getElementById("socLabCard");
     const closeBtn = document.getElementsByClassName("close")[0];
 
     socLabCard.onclick = function() {
       socModal.style.display = "block";
+      document.body.style.overflow = "hidden";
     }
 
     closeBtn.onclick = function() {
       socModal.style.display = "none";
+      document.body.style.overflow = "auto";
+      window.location.hash = "#work"; // Return to Projects tab
     }
 
     window.onclick = function(event) {
       if (event.target == socModal) {
         socModal.style.display = "none";
+        document.body.style.overflow = "auto";
+        window.location.hash = "#work";
       }
     }
   </script>
