@@ -226,18 +226,42 @@
         </div>
       </article>
 
-      <!-- SOC Lab Modal -->
-      <div id="socModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 style="text-shadow:0 0 15px #00CAB1;">AZURE SOC LAB WALKTHROUGH</h2>
-          <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
-          <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map">
-          <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary">
-          <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query">
-          <p>Through this project, I configured a Windows VM as a honeypot, monitored real-world login attempts via Microsoft Sentinel, and visualized attack origins using a geo-map dashboard. The exercise strengthened my skills in <strong>SIEM configuration, KQL querying,</strong> and <strong>threat intelligence analysis</strong>.</p>
-        </div>
-      </div>
+<!-- SOC Lab Modal -->
+<div id="socModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 style="text-shadow:0 0 15px #00CAB1;">AZURE SOC LAB WALKTHROUGH</h2>
+    <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data. The setup and methodology were based on the Azure Sentinel Lab tutorial by John Good on YouTube, which I used as a framework to design and interpret my own lab environment.</p>
+
+    <h3>🔧 Step 1: Environment Setup</h3>
+    <p>I created a free <strong>Microsoft Azure subscription</strong> and deployed a <strong>Windows 10 VM honeypot</strong> exposed to the internet via RDP (3389). To attract real attack traffic, I disabled certain protections like the firewall and Network Level Authentication, allowing brute-force attempts to be logged and observed.</p>
+
+    <h3>📡 Step 2: Data Collection & Monitoring</h3>
+    <p>The VM was connected to a <strong>Log Analytics Workspace (LAW)</strong> and integrated with <strong>Microsoft Sentinel</strong>. From there, I collected and analyzed <strong>SecurityEvent logs</strong>, particularly <em>Event ID 4625</em> (failed logon attempts). This data stream allowed me to simulate how SOC analysts triage incoming telemetry in real-time environments.</p>
+
+    <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map">
+
+    <h3>🧠 Step 3: Querying & Visualization</h3>
+    <p>I wrote custom <strong>Kusto Query Language (KQL)</strong> scripts to parse login events, extract IP addresses, and join them with <strong>GeoIP data</strong> using the <code>_GetWatchlist('geoip')</code> function. These queries were then visualized through an <strong>interactive world map</strong> showing the geographic origin of attacks.</p>
+
+    <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary">
+    <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query">
+
+    <h3>🌍 Step 4: Results & Insights</h3>
+    <p>Within just 24 hours, my VM recorded over <strong>30,000 failed login attempts</strong> from multiple regions — including Poland, Netherlands, Belgium, and Argentina. The data revealed common brute-force tactics such as repeated username cycling and predictable password patterns. Visualizing these results through Sentinel helped me see how attacks scale globally and how a SOC prioritizes threats by frequency and origin.</p>
+
+    <h3>💡 Step 5: Key Takeaways</h3>
+    <ul style="text-align:left; margin:0 auto; width:85%;">
+      <li>Configured and managed a full <strong>SIEM pipeline</strong> within Azure.</li>
+      <li>Strengthened <strong>KQL querying</strong> skills for event correlation and enrichment.</li>
+      <li>Gained experience in <strong>threat intelligence visualization</strong> using Sentinel maps and workbooks.</li>
+      <li>Developed a deeper understanding of <strong>real-world brute-force behavior</strong> and log interpretation.</li>
+    </ul>
+
+    <p style="margin-top:1.5em;">Through this project, I not only replicated a professional SOC workflow but also learned how to interpret raw telemetry and transform it into actionable intelligence — skills directly applicable to <strong>security operations analysis</strong> and <strong>incident response</strong>.</p>
+  </div>
+</div>
+
 
       <!-- Contact -->
       <article id="contact">
