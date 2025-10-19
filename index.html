@@ -239,13 +239,13 @@
     <h3> Step 2: Data Collection & Monitoring</h3>
     <p>The VM was connected to a <strong>Log Analytics Workspace (LAW)</strong> and integrated with <strong>Microsoft Sentinel</strong>. From there, I collected and analyzed <strong>SecurityEvent logs</strong>, particularly <em>Event ID 4625</em> (failed logon attempts). This data stream allowed me to simulate how SOC analysts triage incoming telemetry in real-time environments.</p>
 
-    <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Azure Sentinel Attack Map">
+    <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Azure Sentinel Attack Map">
 
     <h3> Step 3: Querying & Visualization</h3>
     <p>I wrote custom <strong>Kusto Query Language (KQL)</strong> scripts to parse login events, extract IP addresses, and join them with <strong>GeoIP data</strong> using the <code>_GetWatchlist('geoip')</code> function. These queries were then visualized through an <strong>interactive world map</strong> showing the geographic origin of attacks.</p>
 
-    <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Event Viewer Summary">
-    <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Log Analytics KQL Query">
+    <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Event Viewer Summary">
+    <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Log Analytics KQL Query">
 
     <h3> Step 4: Results & Insights</h3>
     <p>Within just 24 hours, my VM recorded over <strong>30,000 failed login attempts</strong> from multiple regions — including Poland, Netherlands, Belgium, and Argentina. The data revealed common brute-force tactics such as repeated username cycling and predictable password patterns. Visualizing these results through Sentinel helped me see how attacks scale globally and how a SOC prioritizes threats by frequency and origin.</p>
