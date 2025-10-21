@@ -301,6 +301,51 @@
     <p style="margin-top:1.5em;">Through this project, I not only replicated a professional SOC workflow but also learned how to interpret raw telemetry and transform it into actionable intelligence — skills directly applicable to <strong>security operations analysis</strong> and <strong>incident response</strong>.</p>
   </div>
 </div>
+<!-- Access Control & Security Auditing Lab Modal -->
+<div id="accessModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 style="text-shadow:0 0 15px #00CAB1;">ACCESS CONTROL & SECURITY AUDITING LAB WALKTHROUGH</h2>
+
+    <p>This lab demonstrates how password-guessing and post-exploitation techniques reveal weak authentication controls — and how stronger policies such as MFA can mitigate such attacks. All testing was performed in the <strong>Virginia Tech Cyber Range Cyber Basics environment</strong>.</p>
+
+    <h3>Step 1: Hydra Brute-Force Attack</h3>
+    <p>Using <strong>Hydra</strong> on a Kali Linux VM, I executed an online password-guessing attack targeting the <code>ftp.example.com</code> service. Hydra was configured with four threads and the John the Ripper password list to identify weak credentials for user <code>alice</code>.</p>
+    <pre><code>hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp</code></pre>
+    <p>The tool made over 3,500 attempts before successfully cracking the password <code>123456</code> on the 17th try — demonstrating how vulnerable short, predictable passwords can be to brute-force automation.</p>
+    <img src="html5up-dimension/images/Hydra%20Command%20Setup.png" alt="Hydra Command Setup Terminal">
+    <img src="html5up-dimension/images/Hydra%20Result.png" alt="Hydra Brute-Force Result">
+
+    <h3>Step 2: FTP Login Validation</h3>
+    <p>After identifying the correct password, I authenticated to the FTP service as <code>alice</code> and confirmed access to the remote UNIX system. This validated that the cracked credentials were functional.</p>
+    <img src="html5up-dimension/images/FTP%20Login%20Validation.png" alt="FTP Login Success">
+
+    <h3>Step 3: Directory Enumeration and File Retrieval</h3>
+    <p>Once logged in, I listed the available files on the FTP server and retrieved a flag file to simulate exfiltration. The commands used were:</p>
+    <pre><code>ftp&gt; ls
+ftp&gt; get flag.txt
+ftp&gt; bye
+cat flag.txt</code></pre>
+    <p>The flag file contained the value <code>42</code>, confirming full read access and data retrieval capabilities.</p>
+    <img src="html5up-dimension/images/FTP%20Directory%20Listing.png" alt="FTP Directory Listing">
+    <img src="html5up-dimension/images/File%20Retrieval.png" alt="FTP File Retrieval">
+    <img src="html5up-dimension/images/Flag%20Verification.png" alt="Flag Verification">
+
+    <h3>Step 4: Expanded Attack Surface Testing</h3>
+    <p>Using the same method, I targeted another FTP account (<code>faythe</code>) and discovered the password <code>password1</code>. This second compromise illustrated the risk of repeating simple password patterns across accounts.</p>
+    <img src="html5up-dimension/images/Hydra%20Result.png" alt="Hydra Result for Second Account">
+
+    <h3>Step 5: Defensive Controls & Recommendations</h3>
+    <ul style="text-align:left; margin:0 auto; width:85%;">
+      <li>Enforce <strong>multi-factor authentication (MFA)</strong> for all external services.</li>
+      <li>Require <strong>complex password policies</strong> (e.g., minimum 12 characters, no dictionary words).</li>
+      <li>Implement <strong>account lockout policies</strong> to prevent repeated login attempts.</li>
+      <li>Monitor authentication logs for abnormal volume or geographic anomalies.</li>
+    </ul>
+
+    <p style="margin-top:1.5em;">Through this lab, I learned how attackers systematically exploit weak credentials — and how layered authentication defenses drastically reduce exposure. These techniques strengthen both blue-team defensive analysis and red-team testing skills.</p>
+  </div>
+</div>
 
 
       <!-- Contact -->
@@ -358,6 +403,33 @@
       if (window.location.hash === "#work") {
         socModal.style.display = "none";
       }
+
+      <!-- Access Control Lab Modal Behavior -->
+<script>
+  const accessModal = document.getElementById("accessModal");
+  const accessLabCard = document.getElementById("accessLabCard");
+  const accessClose = accessModal.querySelector(".close");
+
+  accessLabCard.onclick = function() {
+    accessModal.style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+
+  accessClose.onclick = function() {
+    accessModal.style.display = "none";
+    document.body.style.overflow = "auto";
+    window.location.hash = "";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == accessModal) {
+      accessModal.style.display = "none";
+      document.body.style.overflow = "auto";
+      window.location.hash = "";
+    }
+  }
+</script>
+
     });
   </script>
 </body>
