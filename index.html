@@ -112,6 +112,33 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* === Project Grid Layout (2-column) === */
+#work {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+
+.project-card {
+  flex: 1 1 45%; /* responsive two-column */
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.2em;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.project-card img {
+  width: 100%;
+  height: 260px; /* ensures equal card height */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+
 
     /* Modal styling */
     .modal {
