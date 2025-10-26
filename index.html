@@ -283,6 +283,14 @@
             <p>Simulated password auditing and post-exploitation with Hydra, FTP login validation, and file retrieval to analyze weak credentials and mitigation strategies.</p>
           </div>
 
+          <!-- ✅ NEW: Network Traffic Analysis & Intrusion Detection Lab Card -->
+<div class="project-card" id="networkLabCard">
+  <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis Thumbnail">
+  <h3>Network Traffic Analysis & Intrusion Detection Lab</h3>
+  <p>Captured and analyzed live network packets using TCPDump and Wireshark to identify ARP scans and RDP anomalies within the Virginia Tech Cyber Range.</p>
+</div>
+
+
         </div>
       </article>
 
@@ -391,6 +399,69 @@ hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp
           <p style="margin-top:1.5em;">Through this lab, I learned how attackers systematically exploit weak credentials — and how layered authentication defenses drastically reduce exposure. These techniques strengthen both blue-team defensive analysis and red-team testing skills.</p>
         </div>
       </div>
+
+
+      <!-- ✅ NEW: Network Traffic Analysis & Intrusion Detection Lab Modal -->
+<div id="networkModal" class="modal" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="network-title">
+    <span class="close" data-target="networkModal">&times;</span>
+    <h2 id="network-title" style="text-shadow:0 0 15px #00CAB1;">NETWORK TRAFFIC ANALYSIS & INTRUSION DETECTION LAB WALKTHROUGH</h2>
+
+    <p>This lab demonstrates how to capture, filter, and analyze packets using <strong>TCPDump</strong> and <strong>Wireshark</strong> to detect anomalies such as ARP scans and RDP traffic patterns.</p>
+
+    <h3>Step 1 – Initializing TCPDump</h3>
+    <p>Executed <code>tcpdump -i 1 -c 10</code> on Kali Linux to capture live packets, revealing ARP requests and TCP handshakes between hosts.</p>
+    <figure>
+      <img src="html5up-dimension/images/10.png" alt="TCPDump initialization">
+      <span class="fig-caption">TCPDump capturing live packets and ARP requests between hosts.</span>
+    </figure>
+
+    <h3>Step 2 – Filtering by Protocol &amp; Port</h3>
+    <p>Applied filters (<code>arp</code>, <code>dst port 3389</code>) to isolate RDP traffic and confirm remote connections within the lab network.</p>
+    <figure>
+      <img src="html5up-dimension/images/11.png" alt="Wireshark port filtering">
+      <span class="fig-caption">Wireshark filtering RDP packets on port 3389 to detect remote session activity.</span>
+    </figure>
+
+    <h3>Step 3 – Writing and Reading Capture Files</h3>
+    <p>Saved captures to a <code>.pcap</code> file (<code>-w</code>) and re-read them (<code>-r</code>) for analysis — simulating forensic evidence collection.</p>
+    <figure>
+      <img src="html5up-dimension/images/12.png" alt="TCPDump save and read">
+      <span class="fig-caption">Reviewing stored packet capture files for offline inspection.</span>
+    </figure>
+
+    <h3>Step 4 – Capturing Live Traffic in Wireshark</h3>
+    <p>Launched Wireshark and captured HTTP traffic while browsing. Used filters like <code>http.host</code> and <code>ip.addr == 10.1.66.165</code> to observe outgoing requests.</p>
+    <figure>
+      <img src="html5up-dimension/images/13.png" alt="Wireshark HTTP analysis">
+      <span class="fig-caption">Captured HTTP requests to Google and Mozilla servers via filtered display output.</span>
+    </figure>
+
+    <h3>Step 5 – Following Streams</h3>
+    <p>Used <b>Follow → HTTP Stream</b> to reconstruct client-server conversations and inspect headers for GET/POST methods and responses.</p>
+    <figure>
+      <img src="html5up-dimension/images/14.png" alt="HTTP Stream reconstruction">
+      <span class="fig-caption">Reconstructed HTTP POST request to <code>r3.o.lencr.org</code> with response headers in Wireshark’s Follow Stream view.</span>
+    </figure>
+
+    <h3>Step 6 – Detecting ARP Scans &amp; Suspicious Activity</h3>
+    <p>Filtered <code>arp</code> packets and ran <code>nmap -sn 10.1.66.165/20</code> to observe broadcast requests. Detected “Who has … Tell …” messages indicating an ARP scan.</p>
+    <figure>
+      <img src="html5up-dimension/images/3.png" alt="ARP scan detection">
+      <span class="fig-caption">Wireshark showing broadcast ARP requests consistent with reconnaissance behavior.</span>
+    </figure>
+
+    <h3>Key Insights &amp; Takeaways</h3>
+    <ul style="text-align:left; margin:0 auto; width:85%;">
+      <li>Captured and analyzed 50+ packets across multiple protocols (ARP, TCP, HTTP).</li>
+      <li>Detected ARP scan patterns and RDP traffic anomalies in real time.</li>
+      <li>Practiced evidence collection and packet-level inspection with Wireshark &amp; TCPDump.</li>
+      <li>Enhanced skills in network forensics and intrusion detection for SOC and IR roles.</li>
+    </ul>
+  </div>
+</div>
+
+
 
       <!-- Contact -->
       <article id="contact">
