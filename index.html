@@ -1,408 +1,188 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Maha Baig | Cybersecurity Portfolio</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maha Baig | Cybersecurity Portfolio</title>
   <link rel="stylesheet" href="html5up-dimension/assets/css/main.css" />
   <noscript><link rel="stylesheet" href="html5up-dimension/assets/css/noscript.css" /></noscript>
 
   <style>
-    /* Background video */
-    #bg-video {
-      position: fixed;
-      right: 0; bottom: 0;
-      min-width: 100%; min-height: 100%;
-      z-index: -2; object-fit: cover;
-      filter: brightness(0.55);
-    }
-    #video-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: -1;
-    }
+    /* --- Background video --- */
+    #bg-video{position:fixed;inset:0;z-index:-2;min-width:100%;min-height:100%;object-fit:cover;filter:brightness(.55);}
+    #video-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:-1;}
 
-    /* Header glow */
-    #header h1{
-      font-size:4.5em;color:#fff;
-      text-shadow:0 0 10px #00CAB1,0 0 25px #00CAB1,0 0 45px #00786D;
-      letter-spacing:1.5px;transition:.4s;
-    }
-    #header h1:hover{
-      text-shadow:0 0 20px #00EFD9,0 0 40px #00CAB1,0 0 60px #009C8A;
-      transform:scale(1.02);
-    }
+    /* --- Header aesthetic --- */
+    #header{text-align:center;margin-top:3vh}
+    #header h1{font-size:4.5em;color:#fff;text-shadow:0 0 10px #00CAB1,0 0 25px #00CAB1,0 0 45px #00786D;}
+    #header h1:hover{text-shadow:0 0 20px #00EFD9,0 0 40px #00CAB1,0 0 60px #009C8A;transform:scale(1.02);}
+    nav ul{list-style:none;padding:0;margin-top:1rem;display:flex;justify-content:center;gap:1.2rem}
+    nav a{color:#00CAB1;text-decoration:none;font-weight:600;}
 
-    /* Profile image */
-    .profile-container{display:flex;justify-content:center;margin-bottom:2em;}
-    .profile-image{
-      width:250px;height:250px;border-radius:50%;
-      border:5px solid #fff;object-fit:cover;object-position:50% 28%;
-      box-shadow:0 0 35px rgba(255,255,255,.4);
-      transition:.3s;
-    }
+    /* --- Profile --- */
+    .profile-container{display:flex;justify-content:center;margin:2em 0;}
+    .profile-image{width:250px;height:250px;border-radius:50%;border:5px solid #fff;object-fit:cover;object-position:50% 28%;box-shadow:0 0 35px rgba(255,255,255,.4);transition:.3s;}
     .profile-image:hover{transform:scale(1.32);box-shadow:0 0 45px rgba(0,202,177,.6);}
 
-    /* PROJECT GRID */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-      gap:2.2em; align-items:stretch; justify-items:center;
-      margin-top:2em;
-    }
-    .project-card{
-      background:rgba(255,255,255,.05);
-      border-radius:12px; padding:1.5em; text-align:center;
-      width:100%; max-width:420px; height:420px; /* uniform cards */
-      display:flex; flex-direction:column; align-items:center;
-      transition:.3s ease; cursor:pointer; user-select:none;
-    }
-    .project-card:focus{outline:2px solid #00CAB1; outline-offset:4px;}
-    .project-card:hover{transform:translateY(-4px); background:rgba(255,255,255,.08);}
-    .project-card img{
-      width:100%; height:240px; object-fit:cover; border-radius:10px; margin-bottom:1em;
-      display:block;
-    }
-    .project-card h3{margin:.25em 0 .35em 0; font-weight:700; color:#fff;}
-    .project-desc{
-      margin:0 auto; width:90%; color:#ccc; line-height:1.5em;
-      display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
-    }
-.project-card {
-  position: relative;
-  z-index: 1000; /* ensures cards are clickable above overlay */
-}
-.modal {
-  z-index: 9999; /* ensures modal overlays appear above everything */
-}
+    /* --- Projects grid --- */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2em;justify-items:center;margin:2em auto;max-width:1200px;}
+    .project-card{background:rgba(255,255,255,.05);border-radius:12px;padding:1.5em;text-align:center;max-width:420px;height:420px;display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:.3s;}
+    .project-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.08);}
+    .project-card img{width:100%;height:240px;object-fit:cover;border-radius:10px;margin-bottom:1em;}
+    .project-card h3{color:#fff;margin:.3em 0;}
+    .project-desc{color:#ccc;width:90%;line-height:1.5em;-webkit-line-clamp:4;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden;}
 
-    /* MODALS (scrollable) */
-    .modal{display:none; position:fixed; inset:0; z-index:999;
-      background:rgba(0,0,0,.9);
-    }
-    .modal-content{
-      margin:60px auto; width:85%; max-width:900px; color:#fff; text-align:center;
-      background:transparent; /* blend with theme */
-      max-height:calc(100vh - 120px); overflow-y:auto; padding:20px 0 30px;
-    }
-    .modal-content img{width:100%; margin-top:15px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,.5);}
-    .modal-content h2{margin:0 0 10px 0;}
-    .modal-content h3{color:#00CAB1; margin:22px 0 6px;}
-    .fig-caption{
-      display:block; margin-top:6px; font-size:.9rem; color:#cfcfcf; font-style:italic;
-      text-align:left; width:95%; margin-left:auto; margin-right:auto;
-    }
-    .close{
-      color:#fff; font-size:30px; font-weight:700; cursor:pointer;
-      position:sticky; top:0; float:right; margin-right:10px;
-    }
+    /* --- Modal --- */
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;}
+    .modal-content{margin:60px auto;max-width:900px;width:85%;color:#fff;text-align:center;max-height:calc(100vh - 120px);overflow-y:auto;padding:20px;}
+    .modal-content img{width:100%;border-radius:10px;margin-top:15px;box-shadow:0 0 15px rgba(0,0,0,.5);}
+    .fig-caption{display:block;margin-top:6px;font-size:.9rem;color:#cfcfcf;font-style:italic;text-align:left;width:95%;margin-inline:auto;}
+    .close{color:#fff;font-size:30px;font-weight:700;cursor:pointer;position:sticky;top:0;float:right;}
     .close:hover{color:#00CAB1;}
-
-    @media (max-width:900px){
-      .project-card{max-width:88%;}
-    }
+    @media(max-width:900px){.project-card{max-width:88%;}}
   </style>
 </head>
 
-<body class="is-preload">
-  <!-- Background Video -->
+<body>
+  <!-- background video -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
   </video>
   <div id="video-overlay"></div>
 
-  <!-- Wrapper -->
-  <div id="wrapper">
+  <!-- header -->
+  <header id="header">
+    <h1>Maha Baig</h1>
+    <p>Cybersecurity Analyst | Cloud Security | Threat Detection | AI in Cyber Defense</p>
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header id="header">
-      <div class="logo"><span class="icon fa-shield-alt"></span></div>
-      <div class="content">
-        <div class="inner">
-          <h1>Maha Baig</h1>
-          <p class="typing">Cybersecurity Analyst | Cloud Security | Threat Detection | AI in Cyber Defense</p>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#about">ABOUT ME</a></li>
-          <li><a href="#work">PROJECTS</a></li>
-          <li><a href="#contact">CONTACT</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Main -->
-    <div id="main">
-
-      <!-- ABOUT -->
-      <article id="about">
-        <h2 class="major">ABOUT ME</h2>
-        <div class="profile-container">
-          <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="profile-image" />
-        </div>
-
-        <p><strong>WHO I AM</strong><br>
-        As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real and the mission is to protect people and data from them.</p>
-
-        <p><strong>WHAT I DO</strong><br>
-        Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe from cyberattacks. I focus on <strong>threat detection, cloud security, and incident response</strong>, driven by <strong>curiosity, precision, and integrity</strong> — the same mix that turns protection into prevention.</p>
-
-        <p><strong>WHAT I’VE DONE</strong><br>
-        I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating <strong>Cum Laude</strong>, and hold a <a href="https://www.credly.com/badges/d5e955ae-8b9b-4d8e-84d5-c1af828b1d65/public_url" target="_blank"><strong>CompTIA Security+ certification</strong></a>. One of my main projects was building an <strong>Azure SOC Lab</strong>, where I analyzed over <strong>30,000 Sentinel events</strong>, identified brute-force attempts, and visualized attacker activity through geo-dashboards. I’ve also worked with <strong>Hydra</strong>, <strong>Wireshark</strong>, and <strong>Microsoft Sentinel</strong> to test, document, and strengthen system resilience. I’m currently expanding my foundation through <strong>Johns Hopkins University’s Applied Generative AI program</strong>, using <strong>Python</strong> to explore AI’s role in automating threat detection and data-driven defense.</p>
-
-        <p><strong>WHERE I’M HEADED</strong><br>
-        I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight with intelligent technology to build smarter, adaptive defenses. In many ways, I’m still that kid chasing the instinct to protect others — only now I get to do it in the world of cybersecurity.</p>
-      </article>
-
-      <!-- PROJECTS -->
-      <article id="work">
-        <h2 class="major">PROJECTS</h2>
-
-        <div class="projects-grid">
-          <!-- Azure SOC Lab -->
-          <div class="project-card" id="socLabCard" tabindex="0" aria-label="Open Azure SOC Lab walkthrough">
-            <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
-            <h3>AZURE SOC LAB</h3>
-            <p class="project-desc">Built a Microsoft Azure Sentinel SOC environment, analyzed 30,000+ events, and visualized global attacks in real time.</p>
-          </div>
-
-          <!-- Access Control & Security Auditing Lab -->
-          <div class="project-card" id="accessLabCard" tabindex="0" aria-label="Open Access Control & Security Auditing walkthrough">
-            <img src="html5up-dimension/images/Password-Protection.jpg" alt="Access Control & Security Auditing Thumbnail">
-            <h3>ACCESS CONTROL & SECURITY AUDITING LAB</h3>
-            <p class="project-desc">Simulated password auditing and post-exploitation with Hydra, FTP login validation, and file retrieval to analyze weak credentials.</p>
-          </div>
-
-          <!-- Network Traffic Analysis & Intrusion Detection -->
-          <div class="project-card" id="networkLabCard" tabindex="0" aria-label="Open Network Traffic Analysis walkthrough">
-            <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis Thumbnail">
-            <h3>NETWORK TRAFFIC ANALYSIS & INTRUSION DETECTION LAB</h3>
-            <p class="project-desc">Captured and analyzed live packets using TCPDump and Wireshark to detect ARP scans and RDP anomalies in the VT Cyber Range.</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- SOC MODAL -->
-      <div id="socModal" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-labelledby="soc-title">
-          <span class="close" data-target="socModal" aria-label="Close walkthrough">&times;</span>
-          <h2 id="soc-title" style="text-shadow:0 0 15px #00CAB1;">AZURE SOC LAB WALKTHROUGH</h2>
-          <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data.</p>
-
-          <h3>Step 1: Environment Setup</h3>
-          <p>I created a free <strong>Microsoft Azure subscription</strong> and deployed a <strong>Windows 10 VM honeypot</strong> exposed to the internet via RDP (3389). To attract real attack traffic, I disabled certain protections like the firewall and Network Level Authentication.</p>
-
-          <h3>Step 2: Data Collection & Monitoring</h3>
-          <p>Connected the VM to a <strong>Log Analytics Workspace</strong> and integrated with <strong>Microsoft Sentinel</strong> to ingest <em>SecurityEvent</em> logs (e.g., Event ID 4625 for failed logons).</p>
-
-          <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Sentinel attack map">
-          <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Event viewer summary">
-          <img src="html5up-dimension/images/soc-lab/soc1.png" alt="KQL query in Log Analytics">
-
-          <h3>Step 4: Results & Insights</h3>
-          <p>Within 24 hours, the VM recorded over <strong>30,000 failed login attempts</strong> from multiple regions, revealing brute-force tactics like username cycling and predictable passwords.</p>
-
-          <h3>Key Takeaways</h3>
-          <ul style="text-align:left; margin:0 auto; width:85%;">
-            <li>Configured an end-to-end <strong>SIEM</strong> pipeline.</li>
-            <li>Built and tuned <strong>KQL</strong> queries for enrichment.</li>
-            <li>Gained <strong>threat visualization</strong> practice with Sentinel.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- ACCESS CONTROL MODAL -->
-      <div id="accessModal" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-labelledby="access-title">
-          <span class="close" data-target="accessModal" aria-label="Close walkthrough">&times;</span>
-          <h2 id="access-title" style="text-shadow:0 0 15px #00CAB1;">ACCESS CONTROL & SECURITY AUDITING LAB WALKTHROUGH</h2>
-
-          <p>This lab shows how password-guessing and post-exploitation reveal weak authentication controls — and how MFA & strong policy reduce risk. Conducted in the <strong>Virginia Tech Cyber Range</strong>.</p>
-
-          <h3>Step 1: Hydra Brute-Force</h3>
-          <p>Ran <strong>Hydra</strong> against <code>ftp.example.com</code> using the John wordlist (4 threads) to identify weak credentials for user <code>alice</code>:</p>
-          <pre style="text-align:left;background:#0b0b0b;padding:10px;color:#eee;overflow:auto;border-radius:6px; width:95%; margin:0 auto;">hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp</pre>
-          <figure>
-            <img src="html5up-dimension/images/Hydra%20Command%20Setup.png" alt="Hydra command">
-            <span class="fig-caption">Hydra with John wordlist and verbose output — parallelized password attempts.</span>
-          </figure>
-          <figure>
-            <img src="html5up-dimension/images/Hydra%20Result.png" alt="Hydra success">
-            <span class="fig-caption">Valid password discovered, confirming exposure to online guessing.</span>
-          </figure>
-
-          <h3>Step 2: FTP Login Validation</h3>
-          <figure>
-            <img src="html5up-dimension/images/FTP%20Login%20Validation.png" alt="FTP login">
-            <span class="fig-caption">Successful authentication to the UNIX FTP service with cracked credentials.</span>
-          </figure>
-
-          <h3>Step 3: Directory Enumeration & Retrieval</h3>
-          <figure>
-            <img src="html5up-dimension/images/FTP%20Directory%20Listing.png" alt="Directory listing">
-            <span class="fig-caption">Listing shows <code>flag.txt</code> available for retrieval.</span>
-          </figure>
-          <figure>
-            <img src="html5up-dimension/images/File%20Retrieval.png" alt="File transfer">
-            <span class="fig-caption"><code>get flag.txt</code> completes (33 bytes), simulating data exfiltration.</span>
-          </figure>
-          <figure>
-            <img src="html5up-dimension/images/Flag%20Verification.png" alt="Flag check">
-            <span class="fig-caption">Local verification of retrieved flag value.</span>
-          </figure>
-
-          <h3>Step 4: Expanded Testing</h3>
-          <figure>
-            <img src="html5up-dimension/images/Hydra%20Result.png" alt="Second account result">
-            <span class="fig-caption">Second account cracked (<code>password1</code>) — reused weak pattern.</span>
-          </figure>
-
-          <h3>Defensive Controls</h3>
-          <ul style="text-align:left; margin:0 auto; width:85%;">
-            <li>Require <strong>MFA</strong> on external services.</li>
-            <li>Enforce <strong>complex passwords</strong> (12+ chars) & screening.</li>
-            <li>Enable <strong>lockout</strong> after repeated failures.</li>
-            <li>Monitor auth logs for volume/geographic anomalies.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- NETWORK TRAFFIC MODAL -->
-      <div id="networkModal" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-labelledby="network-title">
-          <span class="close" data-target="networkModal" aria-label="Close walkthrough">&times;</span>
-          <h2 id="network-title" style="text-shadow:0 0 15px #00CAB1;">NETWORK TRAFFIC ANALYSIS & INTRUSION DETECTION LAB WALKTHROUGH</h2>
-
-          <p>Captured, filtered, and analyzed packets with <strong>TCPDump</strong> and <strong>Wireshark</strong> to detect ARP scans and RDP activity patterns.</p>
-
-          <h3>Step 1 — Initialize TCPDump</h3>
-          <p>Executed <code>tcpdump -i 1 -c 10</code> on Kali to capture live packets (ARP & TCP handshakes).</p>
-          <figure>
-            <img src="html5up-dimension/images/10.png" alt="tcpdump capture">
-            <span class="fig-caption">TCPDump capturing ARP “who-has” and replies between hosts.</span>
-          </figure>
-
-          <h3>Step 2 — Protocol/Port Filters</h3>
-          <p>Isolated RDP traffic (<code>dst port 3389</code>) and verified remote sessions.</p>
-          <figure>
-            <img src="html5up-dimension/images/11.png" alt="Wireshark RDP filter">
-            <span class="fig-caption">Display filter highlights RDP flows to port 3389.</span>
-          </figure>
-
-          <h3>Step 3 — Write & Read PCAP</h3>
-          <p>Saved captures to <code>.pcap</code> (<code>-w</code>) and analyzed offline (<code>-r</code>) for forensic workflow.</p>
-          <figure>
-            <img src="html5up-dimension/images/12.png" alt="tcpdump write/read">
-            <span class="fig-caption">Reviewing stored PCAP for structured analysis.</span>
-          </figure>
-
-          <h3>Step 4 — Capture HTTP in Wireshark</h3>
-          <p>Browsed the web while capturing; filtered with <code>http.request.method == "CONNECT"</code> and <code>ip.src == 10.1.66.165</code>.</p>
-          <figure>
-            <img src="html5up-dimension/images/13.png" alt="HTTP host traffic">
-            <span class="fig-caption">Outbound requests to Google/Mozilla endpoints visible in clear metadata.</span>
-          </figure>
-
-          <h3>Step 5 — Follow Streams</h3>
-          <p>Used <em>Follow → HTTP Stream</em> to reconstruct requests/responses for inspection.</p>
-          <figure>
-            <img src="html5up-dimension/images/14.png" alt="Follow HTTP stream">
-            <span class="fig-caption">HTTP POST to <code>r3.o.lencr.org</code> with response headers.</span>
-          </figure>
-
-          <h3>Step 6 — Detect ARP Scans</h3>
-          <p>Filtered <code>arp</code> and ran discovery (<code>nmap -sn</code>) to see broadcast “who-has” patterns.</p>
-          <figure>
-            <img src="html5up-dimension/images/3.png" alt="ARP scan indicators">
-            <span class="fig-caption">Repeated ARP requests indicate reconnaissance behavior.</span>
-          </figure>
-
-          <h3>Key Takeaways</h3>
-          <ul style="text-align:left; margin:0 auto; width:85%;">
-            <li>Captured and analyzed 50+ packets across ARP, TCP, HTTP.</li>
-            <li>Identified ARP scans and RDP anomalies in real time.</li>
-            <li>Practiced evidence collection with TCPDump & Wireshark.</li>
-            <li>Strengthened network forensics & IDS fundamentals.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CONTACT -->
-      <article id="contact">
-        <h2 class="major">CONTACT</h2>
-        <p>Let’s connect! I’m open to opportunities in cybersecurity, cloud defense, and data-driven security analytics.</p>
-        <ul class="icons">
-          <li><a href="https://github.com/mahabaig" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-          <li><a href="https://www.linkedin.com/in/mahabaig" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-          <li><a href="mailto:mahasaudbaig@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
-      </article>
-
+  <!-- ABOUT -->
+  <section id="about" style="max-width:900px;margin:auto;color:#fff;">
+    <div class="profile-container">
+      <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="profile-image"/>
     </div>
+    <p><strong>WHO I AM</strong><br>As a kid I pretended to be a superhero saving people from danger. Today my battlefield is digital — cybersecurity lets me protect people and data from real threats.</p>
+    <p><strong>WHAT I DO</strong><br>I use <strong>analytics, data, and defense tools</strong> to protect organizations. My focus is <strong>threat detection, cloud security, and incident response</strong> driven by curiosity and precision.</p>
+    <p><strong>WHAT I’VE DONE</strong><br>I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech (Cum Laude)</strong> and hold the <a href="https://www.credly.com/badges/d5e955ae-8b9b-4d8e-84d5-c1af828b1d65/public_url" target="_blank">CompTIA Security+ certification</a>. Projects include an <strong>Azure SOC Lab</strong> analyzing 30 000 events and labs with Hydra, Wireshark & Sentinel to strengthen system resilience. Currently I’m studying Generative AI at Johns Hopkins to explore AI-driven threat detection.</p>
+    <p><strong>WHERE I’M HEADED</strong><br>Growing in <strong>cloud security, automation, and AI-powered defense</strong> to combine human insight with intelligent tech for adaptive protection.</p>
+  </section>
 
-    <!-- Footer -->
-    <footer id="footer">
-      <p class="copyright">&copy; 2025 Maha Baig. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.</p>
-    </footer>
+  <!-- PROJECTS -->
+  <section id="work" style="color:#fff;">
+    <h2 style="text-align:center;">PROJECTS</h2>
+    <div class="projects-grid">
+      <div class="project-card" id="socLabCard">
+        <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab thumbnail">
+        <h3>Azure SOC Lab</h3>
+        <p class="project-desc">Built a Microsoft Azure Sentinel SOC environment, analyzed 30 000+ events, and visualized global attacks in real time.</p>
+      </div>
+
+      <div class="project-card" id="accessLabCard">
+        <img src="html5up-dimension/images/Password-Protection.jpg" alt="Access Control thumbnail">
+        <h3>Access Control & Security Auditing Lab</h3>
+        <p class="project-desc">Simulated password auditing and FTP post-exploitation with Hydra to identify weak credentials and test mitigations.</p>
+      </div>
+
+      <div class="project-card" id="networkLabCard">
+        <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis thumbnail">
+        <h3>Network Traffic Analysis & Intrusion Detection</h3>
+        <p class="project-desc">Captured and analyzed live packets with TCPDump & Wireshark to detect ARP scans and RDP anomalies in the VT Cyber Range.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="text-align:center;color:#fff;margin-bottom:4rem;">
+    <h2>CONTACT</h2>
+    <p>Let’s connect! I’m open to roles in cybersecurity and data-driven security analytics.</p>
+    <p>
+      <a href="https://github.com/mahabaig" target="_blank">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/mahabaig" target="_blank">LinkedIn</a> | 
+      <a href="mailto:mahasaudbaig@gmail.com">Email</a>
+    </p>
+  </section>
+
+  <!-- --- Modals --- -->
+  <!-- SOC -->
+  <div id="socModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-target="socModal">&times;</span>
+      <h2>Azure SOC Lab Walkthrough</h2>
+      <p>Built a SOC in Azure Sentinel, collected SecurityEvent logs and visualized attacks worldwide.</p>
+      <h3>Environment Setup</h3>
+      <p>Created Azure VM honeypot exposed on RDP 3389 to attract brute-force traffic and integrated with Sentinel.</p>
+      <img src="html5up-dimension/images/soc-lab/soc2.png" alt="">
+      <img src="html5up-dimension/images/soc-lab/soc3.png" alt="">
+      <img src="html5up-dimension/images/soc-lab/soc1.png" alt="">
+      <h3>Results & Insights</h3>
+      <p>Recorded 30 000 failed logins in 24 h from multiple countries; mapped geo attack origins and patterns.</p>
+    </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="html5up-dimension/assets/js/jquery.min.js"></script>
-  <script src="html5up-dimension/assets/js/browser.min.js"></script>
-  <script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
-  <script src="html5up-dimension/assets/js/util.js"></script>
-  <script src="html5up-dimension/assets/js/main.js"></script>
+  <!-- ACCESS -->
+  <div id="accessModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-target="accessModal">&times;</span>
+      <h2>Access Control & Security Auditing Walkthrough</h2>
+      <p>Demonstrates password-guessing and MFA importance using Hydra and FTP in VT Cyber Range.</p>
+      <h3>Hydra Brute-Force</h3>
+      <img src="html5up-dimension/images/Hydra%20Command%20Setup.png" alt="">
+      <img src="html5up-dimension/images/Hydra%20Result.png" alt="">
+      <h3>FTP Login Validation & File Retrieval</h3>
+      <img src="html5up-dimension/images/FTP%20Login%20Validation.png" alt="">
+      <img src="html5up-dimension/images/File%20Retrieval.png" alt="">
+      <img src="html5up-dimension/images/Flag%20Verification.png" alt="">
+    </div>
+  </div>
 
-  <!-- Modal wiring -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const modals = {
-    socModal: document.getElementById("socModal"),
-    accessModal: document.getElementById("accessModal"),
-    networkModal: document.getElementById("networkModal"),
-  };
-  const cards = {
-    socLabCard: document.getElementById("socLabCard"),
-    accessLabCard: document.getElementById("accessLabCard"),
-    networkLabCard: document.getElementById("networkLabCard"),
-  };
+  <!-- NETWORK -->
+  <div id="networkModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-target="networkModal">&times;</span>
+      <h2>Network Traffic Analysis & Intrusion Detection Walkthrough</h2>
+      <p>Captured packets with TCPDump and Wireshark to spot ARP scans and RDP connections.</p>
+      <img src="html5up-dimension/images/10.png" alt="">
+      <img src="html5up-dimension/images/11.png" alt="">
+      <img src="html5up-dimension/images/12.png" alt="">
+      <img src="html5up-dimension/images/13.png" alt="">
+      <img src="html5up-dimension/images/14.png" alt="">
+      <img src="html5up-dimension/images/3.png" alt="">
+    </div>
+  </div>
 
-  // Open modal (bypass HTML5UP event capture)
-  Object.entries(cards).forEach(([key, el]) => {
-    if (!el) return;
-    const modalId = key.replace("Card", "Modal");
-    el.addEventListener("click", (e) => {
-      e.stopPropagation(); // prevent HTML5UP article click hijack
-      const modal = modals[modalId];
-      if (modal) {
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden";
-      }
+  <!-- --- Script: lightweight modal handler --- -->
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      const modals={socModal:document.getElementById("socModal"),accessModal:document.getElementById("accessModal"),networkModal:document.getElementById("networkModal")};
+      const cards={socLabCard:document.getElementById("socLabCard"),accessLabCard:document.getElementById("accessLabCard"),networkLabCard:document.getElementById("networkLabCard")};
+
+      Object.entries(cards).forEach(([k,card])=>{
+        card.addEventListener("click",()=>{
+          const id=k.replace("Card","Modal");
+          modals[id].style.display="block";
+          document.body.style.overflow="hidden";
+        });
+      });
+      document.querySelectorAll(".close").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          const id=btn.dataset.target;
+          modals[id].style.display="none";
+          document.body.style.overflow="auto";
+        });
+      });
+      window.addEventListener("click",e=>{
+        Object.values(modals).forEach(m=>{
+          if(e.target===m){m.style.display="none";document.body.style.overflow="auto";}
+        });
+      });
     });
-  });
-
-  // Close modals with X
-  document.querySelectorAll(".close").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      const target = btn.getAttribute("data-target");
-      if (modals[target]) modals[target].style.display = "none";
-      document.body.style.overflow = "auto";
-    });
-  });
-
-  // Click outside modal to close
-  window.addEventListener("click", (e) => {
-    Object.values(modals).forEach((modal) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-      }
-    });
-  });
-});
-</script>
-
+  </script>
 </body>
 </html>
-
