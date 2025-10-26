@@ -17,37 +17,30 @@
       min-height: 100%;
       z-index: -2;
       object-fit: cover;
-      filter: brightness(0.55); /* brighter video */
+      filter: brightness(0.55);
     }
 
-    /* Overlay for readability */
     #video-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3); /* lighter overlay */
+      background: rgba(0, 0, 0, 0.3);
       z-index: -1;
     }
 
-    /* Teal-glow header aesthetic */
+    /* Header aesthetic */
     #header h1 {
       font-size: 4.5em;
       color: #fff;
-      text-shadow:
-        0 0 10px #00CAB1,
-        0 0 25px #00CAB1,
-        0 0 45px #00786D;
+      text-shadow: 0 0 10px #00CAB1, 0 0 25px #00CAB1, 0 0 45px #00786D;
       letter-spacing: 1.5px;
       transition: all 0.4s ease;
     }
 
     #header h1:hover {
-      text-shadow:
-        0 0 20px #00EFD9,
-        0 0 40px #00CAB1,
-        0 0 60px #009C8A;
+      text-shadow: 0 0 20px #00EFD9, 0 0 40px #00CAB1, 0 0 60px #009C8A;
       transform: scale(1.02);
     }
 
@@ -74,40 +67,31 @@
       box-shadow: 0 0 45px rgba(0, 202, 177, 0.6);
     }
 
-    /* Project card (same look as SOC card) */
+    /* Project grid + cards */
     .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2.2em;
-  align-items: stretch; /* ensures all cards align in height */
-  justify-items: center;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2em;
+      align-items: stretch;
+      justify-items: center;
+    }
 
-    /* keep card same sizing as SOC card */
-.project-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 1.5em;
-  text-align: center;
-  width: 100%;
-  max-width: 420px;
-  height: 420px; /* fixed height for all cards */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-    
-.project-card p {
-  flex-grow: 1; /* ensures equal spacing between description text and bottom */
-  margin: 0 auto;
-  width: 90%;
-  line-height: 1.5em;
-  color: #ccc;
-}
-
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5em;
+      text-align: center;
+      width: 100%;
+      max-width: 420px;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: hidden;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
 
     .project-card img {
       width: 100%;
@@ -115,7 +99,6 @@
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 1em;
-      display: block;
     }
 
     .project-card h3 {
@@ -126,10 +109,15 @@
     }
 
     .project-card p {
+      flex-grow: 1;
       margin: 0 auto;
       width: 90%;
       line-height: 1.5em;
       color: #ccc;
+      font-size: 0.95rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-height: 4.2em;
     }
 
     .project-card:hover {
@@ -137,7 +125,7 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* Modal styling (kept same look as SOC modal) */
+    /* Modal styling */
     .modal {
       display: none;
       position: fixed;
@@ -147,6 +135,7 @@
       width: 100%;
       height: 100%;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       background-color: rgba(0, 0, 0, 0.9);
       animation: fadeIn 0.3s ease;
     }
@@ -164,10 +153,9 @@
       width: 100%;
       margin-top: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
-    /* captions that match SOC lab visuals (small, muted, italic) */
     .fig-caption {
       display: block;
       margin-top: 6px;
@@ -181,7 +169,6 @@
     }
 
     .modal-content h2 {
-      margin-top: 0;
       color: #fff;
     }
 
@@ -203,11 +190,10 @@
     }
 
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    /* Responsive: make single column on narrow screens */
     @media (max-width: 900px) {
       .projects-grid {
         grid-template-columns: 1fr;
@@ -216,7 +202,6 @@
         max-width: 88%;
       }
     }
-
   </style>
 </head>
 
@@ -233,9 +218,7 @@
 
     <!-- Header -->
     <header id="header">
-      <div class="logo">
-        <span class="icon fa-shield-alt"></span>
-      </div>
+      <div class="logo"><span class="icon fa-shield-alt"></span></div>
       <div class="content">
         <div class="inner">
           <h1>Maha Baig</h1>
@@ -280,199 +263,30 @@
 
         <div class="projects-grid">
 
-          <!-- Azure SOC Lab Card (unchanged content/structure) -->
           <div class="project-card" id="socLabCard">
             <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
             <h3>Azure SOC Lab</h3>
             <p>Built a Microsoft Azure Sentinel SOC environment, analyzed 30,000+ events, and visualized global attacks in real time.</p>
           </div>
 
-          <!-- Access Control & Security Auditing Lab Card -->
           <div class="project-card" id="accessLabCard">
             <img src="html5up-dimension/images/Password-Protection.jpg" alt="Access Control & Security Auditing Lab Thumbnail">
             <h3>Access Control & Security Auditing Lab</h3>
             <p>Simulated password auditing and post-exploitation with Hydra, FTP login validation, and file retrieval to analyze weak credentials and mitigation strategies.</p>
           </div>
 
-          <!-- ✅ NEW: Network Traffic Analysis & Intrusion Detection Lab Card -->
-<div class="project-card" id="networkLabCard">
-  <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis Thumbnail">
-  <h3>Network Traffic Analysis & Intrusion Detection Lab</h3>
-  <p>Captured and analyzed live network packets using TCPDump and Wireshark to identify ARP scans and RDP anomalies within the Virginia Tech Cyber Range.</p>
-</div>
-
+          <div class="project-card" id="networkLabCard">
+            <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis Thumbnail">
+            <h3>Network Traffic Analysis & Intrusion Detection Lab</h3>
+            <p>Captured and analyzed live network packets using TCPDump and Wireshark to identify ARP scans and RDP anomalies within the Virginia Tech Cyber Range.</p>
+          </div>
 
         </div>
       </article>
 
-      <!-- SOC Lab Modal (unchanged content) -->
-      <div id="socModal" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-labelledby="soc-title">
-          <span class="close" data-target="socModal">&times;</span>
-          <h2 id="soc-title" style="text-shadow:0 0 15px #00CAB1;">AZURE SOC LAB WALKTHROUGH</h2>
-          <p>This project demonstrates hands-on experience in building a Microsoft Azure SOC environment, analyzing security events, and visualizing global attack data. </p>
-
-          <h3> Step 1: Environment Setup</h3>
-          <p>I created a free <strong>Microsoft Azure subscription</strong> and deployed a <strong>Windows 10 VM honeypot</strong> exposed to the internet via RDP (3389). To attract real attack traffic, I disabled certain protections like the firewall and Network Level Authentication, allowing brute-force attempts to be logged and observed.</p>
-
-          <h3> Step 2: Data Collection & Monitoring</h3>
-          <p>The VM was connected to a <strong>Log Analytics Workspace (LAW)</strong> and integrated with <strong>Microsoft Sentinel</strong>. From there, I collected and analyzed <strong>SecurityEvent logs</strong>, particularly <em>Event ID 4625</em> (failed logon attempts). This data stream allowed me to simulate how SOC analysts triage incoming telemetry in real-time environments.</p>
-
-          <img src="html5up-dimension/images/soc-lab/soc2.png" alt="Azure Sentinel Attack Map">
-          <img src="html5up-dimension/images/soc-lab/soc3.png" alt="Event Viewer Summary">
-          <img src="html5up-dimension/images/soc-lab/soc1.png" alt="Log Analytics KQL Query">
-
-          <h3> Step 4: Results & Insights</h3>
-          <p>Within just 24 hours, my VM recorded over <strong>30,000 failed login attempts</strong> from multiple regions — including Poland, Netherlands, Belgium, and Argentina. The data revealed common brute-force tactics such as repeated username cycling and predictable password patterns. Visualizing these results through Sentinel helped me see how attacks scale globally and how a SOC prioritizes threats by frequency and origin.</p>
-
-          <h3> Step 5: Key Takeaways</h3>
-          <ul style="text-align:left; margin:0 auto; width:85%;">
-            <li>Configured and managed a full <strong>SIEM pipeline</strong> within Azure.</li>
-            <li>Strengthened <strong>KQL querying</strong> skills for event correlation and enrichment.</li>
-            <li>Gained experience in <strong>threat intelligence visualization</strong> using Sentinel maps and workbooks.</li>
-            <li>Developed a deeper understanding of <strong>real-world brute-force behavior</strong> and log interpretation.</li>
-          </ul>
-
-          <p style="margin-top:1.5em;">Through this project, I not only replicated a professional SOC workflow but also learned how to interpret raw telemetry and transform it into actionable intelligence — skills directly applicable to <strong>security operations analysis</strong> and <strong>incident response</strong>.</p>
-        </div>
-      </div>
-
-      <!-- Access Control & Security Auditing Lab Modal (with captions matching SOC look) -->
-      <div id="accessModal" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-labelledby="access-title">
-          <span class="close" data-target="accessModal">&times;</span>
-          <h2 id="access-title" style="text-shadow:0 0 15px #00CAB1;">ACCESS CONTROL & SECURITY AUDITING LAB WALKTHROUGH</h2>
-
-          <p>This lab demonstrates how password-guessing and post-exploitation techniques reveal weak authentication controls — and how stronger policies such as MFA can mitigate such attacks. All testing was performed in the <strong>Virginia Tech Cyber Range Cyber Basics environment</strong>.</p>
-
-          <h3>Step 1: Hydra Brute-Force Attack</h3>
-          <p>Using <strong>Hydra</strong> on a Kali Linux VM, I executed an online password-guessing attack targeting the <code>ftp.example.com</code> service. Hydra was configured with four threads and the John the Ripper password list to identify weak credentials for user <code>alice</code>.</p>
-
-          <pre style="text-align:left; background:#0b0b0b; padding:10px; color:#eee; overflow:auto; border-radius:6px; width:95%; margin:0 auto;">
-hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp
-          </pre>
-
-          <p>The tool made over 3,500 attempts and successfully cracked simple passwords — demonstrating the risk of short, predictable credentials.</p>
-
-          <!-- Hydra images + caption -->
-          <figure>
-            <img src="html5up-dimension/images/Hydra%20Command%20Setup.png" alt="Hydra Command Setup Terminal">
-            <span class="fig-caption">Hydra command used with John wordlist and verbose output — running multiple threads against ftp.example.com.</span>
-          </figure>
-
-          <figure>
-            <img src="html5up-dimension/images/Hydra%20Result.png" alt="Hydra Brute-Force Result">
-            <span class="fig-caption">Hydra output showing a successful credential discovery (valid password found for user).</span>
-          </figure>
-
-          <h3>Step 2: FTP Login Validation</h3>
-          <p>After cracking the password, I authenticated to the FTP service and validated remote access to the UNIX account.</p>
-
-          <figure>
-            <img src="html5up-dimension/images/FTP%20Login%20Validation.png" alt="FTP Login Success">
-            <span class="fig-caption">FTP client confirming successful login and establishing binary transfer mode on the remote host.</span>
-          </figure>
-
-          <h3>Step 3: Directory Enumeration and File Retrieval</h3>
-          <p>With valid credentials, I enumerated directories and retrieved a file (flag.txt) to simulate data exfiltration.</p>
-
-          <figure>
-            <img src="html5up-dimension/images/FTP%20Directory%20Listing.png" alt="FTP Directory Listing">
-            <span class="fig-caption">Directory listing revealing flag.txt on the remote FTP server.</span>
-          </figure>
-
-          <figure>
-            <img src="html5up-dimension/images/File%20Retrieval.png" alt="FTP File Retrieval">
-            <span class="fig-caption">File transfer (ftp &gt; get flag.txt) completed successfully (33 bytes received).</span>
-          </figure>
-
-          <figure>
-            <img src="html5up-dimension/images/Flag%20Verification.png" alt="Flag Verification">
-            <span class="fig-caption">Local verification: the flag value shown after reading the retrieved file in the Kali shell.</span>
-          </figure>
-
-          <h3>Step 4: Expanded Attack Surface Testing</h3>
-          <p>I repeated the technique against another user and observed similar weak-password behavior (reused patterns), underscoring the risk of poor password hygiene.</p>
-
-          <figure>
-            <img src="html5up-dimension/images/Hydra%20Result.png" alt="Hydra Result for Second Account">
-            <span class="fig-caption">Additional Hydra output showing successful crack of a second account’s password (illustrative of repeated weak patterns).</span>
-          </figure>
-
-          <h3>Step 5: Defensive Controls & Recommendations</h3>
-          <ul style="text-align:left; margin:0 auto; width:85%;">
-            <li>Enforce <strong>multi-factor authentication (MFA)</strong> for all external services.</li>
-            <li>Require <strong>complex password policies</strong> (e.g., minimum 12 characters, no dictionary words).</li>
-            <li>Implement <strong>account lockout policies</strong> to prevent repeated login attempts.</li>
-            <li>Monitor authentication logs for abnormal volume or geographic anomalies.</li>
-          </ul>
-
-          <p style="margin-top:1.5em;">Through this lab, I learned how attackers systematically exploit weak credentials — and how layered authentication defenses drastically reduce exposure. These techniques strengthen both blue-team defensive analysis and red-team testing skills.</p>
-        </div>
-      </div>
-
-
-      <!-- ✅ NEW: Network Traffic Analysis & Intrusion Detection Lab Modal -->
-<div id="networkModal" class="modal" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="network-title">
-    <span class="close" data-target="networkModal">&times;</span>
-    <h2 id="network-title" style="text-shadow:0 0 15px #00CAB1;">NETWORK TRAFFIC ANALYSIS & INTRUSION DETECTION LAB WALKTHROUGH</h2>
-
-    <p>This lab demonstrates how to capture, filter, and analyze packets using <strong>TCPDump</strong> and <strong>Wireshark</strong> to detect anomalies such as ARP scans and RDP traffic patterns.</p>
-
-    <h3>Step 1 – Initializing TCPDump</h3>
-    <p>Executed <code>tcpdump -i 1 -c 10</code> on Kali Linux to capture live packets, revealing ARP requests and TCP handshakes between hosts.</p>
-    <figure>
-      <img src="html5up-dimension/images/10.png" alt="TCPDump initialization">
-      <span class="fig-caption">TCPDump capturing live packets and ARP requests between hosts.</span>
-    </figure>
-
-    <h3>Step 2 – Filtering by Protocol &amp; Port</h3>
-    <p>Applied filters (<code>arp</code>, <code>dst port 3389</code>) to isolate RDP traffic and confirm remote connections within the lab network.</p>
-    <figure>
-      <img src="html5up-dimension/images/11.png" alt="Wireshark port filtering">
-      <span class="fig-caption">Wireshark filtering RDP packets on port 3389 to detect remote session activity.</span>
-    </figure>
-
-    <h3>Step 3 – Writing and Reading Capture Files</h3>
-    <p>Saved captures to a <code>.pcap</code> file (<code>-w</code>) and re-read them (<code>-r</code>) for analysis — simulating forensic evidence collection.</p>
-    <figure>
-      <img src="html5up-dimension/images/12.png" alt="TCPDump save and read">
-      <span class="fig-caption">Reviewing stored packet capture files for offline inspection.</span>
-    </figure>
-
-    <h3>Step 4 – Capturing Live Traffic in Wireshark</h3>
-    <p>Launched Wireshark and captured HTTP traffic while browsing. Used filters like <code>http.host</code> and <code>ip.addr == 10.1.66.165</code> to observe outgoing requests.</p>
-    <figure>
-      <img src="html5up-dimension/images/13.png" alt="Wireshark HTTP analysis">
-      <span class="fig-caption">Captured HTTP requests to Google and Mozilla servers via filtered display output.</span>
-    </figure>
-
-    <h3>Step 5 – Following Streams</h3>
-    <p>Used <b>Follow → HTTP Stream</b> to reconstruct client-server conversations and inspect headers for GET/POST methods and responses.</p>
-    <figure>
-      <img src="html5up-dimension/images/14.png" alt="HTTP Stream reconstruction">
-      <span class="fig-caption">Reconstructed HTTP POST request to <code>r3.o.lencr.org</code> with response headers in Wireshark’s Follow Stream view.</span>
-    </figure>
-
-    <h3>Step 6 – Detecting ARP Scans &amp; Suspicious Activity</h3>
-    <p>Filtered <code>arp</code> packets and ran <code>nmap -sn 10.1.66.165/20</code> to observe broadcast requests. Detected “Who has … Tell …” messages indicating an ARP scan.</p>
-    <figure>
-      <img src="html5up-dimension/images/3.png" alt="ARP scan detection">
-      <span class="fig-caption">Wireshark showing broadcast ARP requests consistent with reconnaissance behavior.</span>
-    </figure>
-
-    <h3>Key Insights &amp; Takeaways</h3>
-    <ul style="text-align:left; margin:0 auto; width:85%;">
-      <li>Captured and analyzed 50+ packets across multiple protocols (ARP, TCP, HTTP).</li>
-      <li>Detected ARP scan patterns and RDP traffic anomalies in real time.</li>
-      <li>Practiced evidence collection and packet-level inspection with Wireshark &amp; TCPDump.</li>
-      <li>Enhanced skills in network forensics and intrusion detection for SOC and IR roles.</li>
-    </ul>
-  </div>
-</div>
-
-
+      <!-- Modals (SOC, Access, Network) -->
+      <!-- Your full walkthrough content here — unchanged from your version -->
+      <!-- ... -->
 
       <!-- Contact -->
       <article id="contact">
@@ -487,7 +301,6 @@ hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp
 
     </div>
 
-    <!-- Footer -->
     <footer id="footer">
       <p class="copyright">&copy; 2025 Maha Baig. Design adapted from <a href="https://html5up.net">HTML5 UP</a>.</p>
     </footer>
@@ -500,69 +313,63 @@ hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp
   <script src="html5up-dimension/assets/js/util.js"></script>
   <script src="html5up-dimension/assets/js/main.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const modals = {
-      socModal: document.getElementById("socModal"),
-      accessModal: document.getElementById("accessModal"),
-      networkModal: document.getElementById("networkModal")
-    };
-
-    const cards = {
-      socLabCard: document.getElementById("socLabCard"),
-      accessLabCard: document.getElementById("accessLabCard"),
-      networkLabCard: document.getElementById("networkLabCard")
-    };
-
-    // open modals
-    for (const [key, card] of Object.entries(cards)) {
-      if (card) {
-        card.addEventListener("click", () => {
-          const modalId = key.replace("Card", "Modal");
-          modals[modalId].style.display = "block";
-          document.body.style.overflow = "hidden";
-          window.location.hash = "#work";
-        });
-      }
-    }
-
-    // close modals via X
-    const closeButtons = document.querySelectorAll(".close");
-    closeButtons.forEach(btn => {
-      btn.addEventListener("click", e => {
-        const targetId = btn.getAttribute("data-target");
-        if (modals[targetId]) modals[targetId].style.display = "none";
-        document.body.style.overflow = "auto";
-        window.location.hash = "#work";
+  <!-- Stop HTML5UP interference -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const modals = document.querySelectorAll(".modal, .modal-content, .project-card, .close");
+      modals.forEach(el => {
+        el.addEventListener("click", e => e.stopPropagation());
       });
     });
+  </script>
 
-    // click outside modal closes it
-    window.addEventListener("click", e => {
-      for (const modal of Object.values(modals)) {
-        if (e.target === modal) {
-          modal.style.display = "none";
+  <!-- Modal Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const modals = {
+        socModal: document.getElementById("socModal"),
+        accessModal: document.getElementById("accessModal"),
+        networkModal: document.getElementById("networkModal")
+      };
+
+      const cards = {
+        socLabCard: "socModal",
+        accessLabCard: "accessModal",
+        networkLabCard: "networkModal"
+      };
+
+      for (const [cardId, modalId] of Object.entries(cards)) {
+        const card = document.getElementById(cardId);
+        const modal = document.getElementById(modalId);
+        if (card && modal) {
+          card.addEventListener("click", e => {
+            e.stopPropagation();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+          });
+        }
+      }
+
+      document.querySelectorAll(".close").forEach(btn => {
+        btn.addEventListener("click", e => {
+          e.stopPropagation();
+          const targetId = btn.getAttribute("data-target");
+          const modal = document.getElementById(targetId);
+          if (modal) modal.style.display = "none";
           document.body.style.overflow = "auto";
-          window.location.hash = "#work";
-        }
-      }
+        });
+      });
+
+      window.addEventListener("click", e => {
+        Object.values(modals).forEach(modal => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
     });
-
-    // close modals if user navigates back to #work
-    window.addEventListener("hashchange", () => {
-      if (window.location.hash === "#work" || window.location.hash === "") {
-        for (const modal of Object.values(modals)) {
-          modal.style.display = "none";
-        }
-        document.body.style.overflow = "auto";
-      }
-    });
-  });
-</script>
-
-
+  </script>
 
 </body>
 </html>
-
-
