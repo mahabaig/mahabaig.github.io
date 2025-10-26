@@ -86,17 +86,30 @@
     }
 
     /* keep card same sizing as SOC card */
-    .project-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 1.5em;
-      text-align: center;
-      width: 100%;
-      max-width: 420px; /* same as SOC card width */
-      min-height: 420px; /* ensures equal height */
-      transition: 0.3s ease;
-      cursor: pointer;
-    }
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5em;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  height: 420px; /* fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+    
+.project-card p {
+  flex-grow: 1; /* ensures equal spacing between description text and bottom */
+  margin: 0 auto;
+  width: 90%;
+  line-height: 1.5em;
+  color: #ccc;
+}
+
 
     .project-card img {
       width: 100%;
@@ -489,82 +502,64 @@ hydra -t 4 -l alice -P /usr/share/john/password.lst -vV ftp.example.com ftp
   <script src="html5up-dimension/assets/js/util.js"></script>
   <script src="html5up-dimension/assets/js/main.js"></script>
 
-  <script>
-    // Modal handling for both SOC and Access lab
-    (function() {
-      // SOC modal
-      const socModal = document.getElementById("socModal");
-      const socLabCard = document.getElementById("socLabCard");
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const socModal = document.getElementById("socModal");
+    const socLabCard = document.getElementById("socLabCard");
 
-      // Access modal
-      const accessModal = document.getElementById("accessModal");
-      const accessLabCard = document.getElementById("accessLabCard");
+    const accessModal = document.getElementById("accessModal");
+    const accessLabCard = document.getElementById("accessLabCard");
 
-      // open handlers
-      if (socLabCard) {
-        socLabCard.addEventListener("click", function() {
-          socModal.style.display = "block";
-          document.body.style.overflow = "hidden";
-          // ensure hash indicates we are in project modal (keeps Projects nav predictable)
-          window.location.hash = "#work";
-        });
-      }
+    const networkModal = document.getElementById("networkModal");
+    const networkLabCard = document.getElementById("networkLabCard");
 
-      if (accessLabCard) {
-        accessLabCard.addEventListener("click", function() {
-          accessModal.style.display = "block";
-          document.body.style.overflow = "hidden";
-          window.location.hash = "#work";
-        });
-      }
+    // open modals
+    if (socLabCard) socLabCard.addEventListener("click", () => openModal(socModal));
+    if (accessLabCard) accessLabCard.addEventListener("click", () => openModal(accessModal));
+    if (networkLabCard) networkLabCard.addEventListener("click", () => openModal(networkModal));
 
-      // close buttons (both modals share .close)
-      const closeButtons = document.querySelectorAll(".close");
-      closeButtons.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-          const targetId = btn.getAttribute("data-target");
-          if (targetId === "socModal") {
-            socModal.style.display = "none";
-          } else if (targetId === "accessModal") {
-            accessModal.style.display = "none";
-          } else {
-            // fall back: hide nearest modal parent
-            const parentModal = btn.closest(".modal");
-            if (parentModal) parentModal.style.display = "none";
-          }
-          document.body.style.overflow = "auto";
-          // return to projects section (keeps nav predictable)
-          window.location.hash = "#work";
-        });
+    // helper function
+    function openModal(modal) {
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden";
+      window.location.hash = "#work";
+    }
+
+    // close buttons
+    const closeButtons = document.querySelectorAll(".close");
+    closeButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+        const modal = document.getElementById(targetId);
+        if (modal) modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        window.location.hash = "#work";
       });
+    });
 
-      // clicking outside a modal closes it
-      window.addEventListener("click", function(event) {
-        if (event.target === socModal) {
-          socModal.style.display = "none";
-          document.body.style.overflow = "auto";
-          window.location.hash = "#work";
-        } else if (event.target === accessModal) {
-          accessModal.style.display = "none";
+    // click outside modal closes it
+    window.addEventListener("click", e => {
+      [socModal, accessModal, networkModal].forEach(modal => {
+        if (e.target === modal) {
+          modal.style.display = "none";
           document.body.style.overflow = "auto";
           window.location.hash = "#work";
         }
       });
+    });
 
-      // hashchange: if user navigates back to #work, close all modals
-      window.addEventListener("hashchange", function() {
-        if (window.location.hash === "#work" || window.location.hash === "" ) {
-          if (socModal) socModal.style.display = "none";
-          if (accessModal) accessModal.style.display = "none";
-          document.body.style.overflow = "auto";
-        }
-      });
+    // reset modals on hash change
+    window.addEventListener("hashchange", () => {
+      if (["#work", ""].includes(window.location.hash)) {
+        [socModal, accessModal, networkModal].forEach(modal => {
+          if (modal) modal.style.display = "none";
+        });
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+</script>
 
-      // ensure starting state: close modals
-      if (socModal) socModal.style.display = "none";
-      if (accessModal) accessModal.style.display = "none";
-    })();
-  </script>
 
 </body>
 </html>
