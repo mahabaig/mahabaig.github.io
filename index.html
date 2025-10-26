@@ -30,7 +30,7 @@
       z-index: -1;
     }
 
-    /* Header aesthetic */
+    /* Header glow */
     #header h1 {
       font-size: 4.5em;
       color: #fff;
@@ -58,26 +58,25 @@
       border: 5px solid white;
       object-fit: cover;
       object-position: 50% 28%;
-      box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 35px rgba(255,255,255,0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .profile-image:hover {
       transform: scale(1.32);
-      box-shadow: 0 0 45px rgba(0, 202, 177, 0.6);
+      box-shadow: 0 0 45px rgba(0,202,177,0.6);
     }
 
-    /* Project grid + cards */
+    /* Project grid & cards */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit,minmax(340px,1fr));
       gap: 2.2em;
       align-items: stretch;
       justify-items: center;
     }
 
     .project-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.05);
       border-radius: 12px;
       padding: 1.5em;
       text-align: center;
@@ -93,6 +92,11 @@
       cursor: pointer;
     }
 
+    .project-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.08);
+    }
+
     .project-card img {
       width: 100%;
       height: 240px;
@@ -106,26 +110,20 @@
       font-weight: 600;
       letter-spacing: 1px;
       color: #fff;
+      text-transform: uppercase;
+      font-size: 0.95rem;
     }
 
     .project-card p {
-      flex-grow: 1;
-      margin: 0 auto;
-      width: 90%;
-      line-height: 1.5em;
       color: #ccc;
-      font-size: 0.95rem;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      font-size: 0.9rem;
+      line-height: 1.4em;
       max-height: 4.2em;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    /* Modal styling */
+    /* Modals */
     .modal {
       display: none;
       position: fixed;
@@ -136,7 +134,7 @@
       height: 100%;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0,0,0,0.9);
       animation: fadeIn 0.3s ease;
     }
 
@@ -153,7 +151,7 @@
       width: 100%;
       margin-top: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
 
     .fig-caption {
@@ -164,8 +162,7 @@
       font-style: italic;
       text-align: left;
       width: 95%;
-      margin-left: auto;
-      margin-right: auto;
+      margin: auto;
     }
 
     .modal-content h2 {
@@ -184,39 +181,28 @@
       font-weight: bold;
       cursor: pointer;
     }
-
-    .close:hover {
-      color: #00CAB1;
-    }
+    .close:hover { color: #00CAB1; }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {opacity:0;}
+      to {opacity:1;}
     }
 
-    @media (max-width: 900px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      .project-card {
-        max-width: 88%;
-      }
+    @media(max-width:900px){
+      .projects-grid{grid-template-columns:1fr;}
+      .project-card{max-width:88%;}
     }
   </style>
 </head>
 
 <body class="is-preload">
 
-  <!-- Background Video -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="html5up-dimension/videos/pexels-code-loop.mp4" type="video/mp4" />
   </video>
   <div id="video-overlay"></div>
 
-  <!-- Wrapper -->
   <div id="wrapper">
-
-    <!-- Header -->
     <header id="header">
       <div class="logo"><span class="icon fa-shield-alt"></span></div>
       <div class="content">
@@ -234,71 +220,70 @@
       </nav>
     </header>
 
-    <!-- Main -->
     <div id="main">
-
-      <!-- About -->
       <article id="about">
         <h2 class="major">ABOUT ME</h2>
         <div class="profile-container">
-          <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="profile-image" />
+          <img src="html5up-dimension/images/maha-profile.jpg" alt="Maha Baig" class="profile-image"/>
         </div>
-
-        <p><strong>WHO I AM</strong><br>
-        As a kid, I ran around the playground pretending to be a superhero — imagining I was saving people from danger. Today, my battlefield is digital. Cybersecurity gives me that same sense of purpose, only now the threats are real and the mission is to protect people and data from them.</p>
-
-        <p><strong>WHAT I DO</strong><br>
-        Instead of a cape, I use <strong>analytics, data, and defense tools</strong> to keep individuals and organizations safe from cyberattacks. I focus on <strong>threat detection, cloud security, and incident response</strong>, driven by <strong>curiosity, precision, and integrity</strong> — the same mix that turns protection into prevention.</p>
-
-        <p><strong>WHAT I’VE DONE</strong><br>
-        I earned my <strong>B.S. in Cybersecurity Management and Analytics from Virginia Tech</strong>, graduating <strong>Cum Laude</strong>, and hold a <a href="https://www.credly.com/badges/d5e955ae-8b9b-4d8e-84d5-c1af828b1d65/public_url" target="_blank"><strong>CompTIA Security+ certification</strong></a>. One of my main projects was building an <strong>Azure SOC Lab</strong>, where I analyzed over <strong>30,000 Sentinel events</strong>, identified brute-force attempts, and visualized attacker activity through geo-dashboards. I’ve also worked with <strong>Hydra</strong>, <strong>Wireshark</strong>, and <strong>Microsoft Sentinel</strong> to test, document, and strengthen system resilience. I’m currently expanding my foundation through <strong>Johns Hopkins University’s Applied Generative AI program</strong>, using <strong>Python</strong> to explore AI’s role in automating threat detection and data-driven defense.</p>
-
-        <p><strong>WHERE I’M HEADED</strong><br>
-        I’m focused on growing in <strong>cloud security, automation, and AI-powered detection</strong> — combining human insight with intelligent technology to build smarter, adaptive defenses. In many ways, I’m still that kid chasing the instinct to protect others — only now I get to do it in the world of cybersecurity.</p>
+        <p><strong>WHO I AM</strong><br>I’m a cybersecurity professional who blends analytical thinking with curiosity and creativity to protect data and systems.</p>
       </article>
 
-      <!-- Projects -->
       <article id="work">
         <h2 class="major">PROJECTS</h2>
-
         <div class="projects-grid">
-
           <div class="project-card" id="socLabCard">
-            <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab Thumbnail">
+            <img src="html5up-dimension/images/project-soc.jpg" alt="Azure SOC Lab">
             <h3>Azure SOC Lab</h3>
-            <p>Built a Microsoft Azure Sentinel SOC environment, analyzed 30,000+ events, and visualized global attacks in real time.</p>
+            <p>Built a Microsoft Azure Sentinel SOC environment, analyzed 30,000+ events, and visualized global attacks.</p>
           </div>
 
           <div class="project-card" id="accessLabCard">
-            <img src="html5up-dimension/images/Password-Protection.jpg" alt="Access Control & Security Auditing Lab Thumbnail">
+            <img src="html5up-dimension/images/Password-Protection.jpg" alt="Access Control Lab">
             <h3>Access Control & Security Auditing Lab</h3>
-            <p>Simulated password auditing and post-exploitation with Hydra, FTP login validation, and file retrieval to analyze weak credentials and mitigation strategies.</p>
+            <p>Simulated password auditing with Hydra and FTP login validation to uncover weak credentials.</p>
           </div>
 
           <div class="project-card" id="networkLabCard">
-            <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis Thumbnail">
+            <img src="html5up-dimension/images/network-traffic-thumbnail.webp" alt="Network Traffic Analysis Lab">
             <h3>Network Traffic Analysis & Intrusion Detection Lab</h3>
-            <p>Captured and analyzed live network packets using TCPDump and Wireshark to identify ARP scans and RDP anomalies within the Virginia Tech Cyber Range.</p>
+            <p>Captured and analyzed live packets with TCPDump and Wireshark to detect ARP and RDP anomalies.</p>
           </div>
-
         </div>
       </article>
 
-      <!-- Modals (SOC, Access, Network) -->
-      <!-- Your full walkthrough content here — unchanged from your version -->
-      <!-- ... -->
+      <!-- Example one modal (repeat your full walkthroughs here) -->
+      <div id="socModal" class="modal">
+        <div class="modal-content">
+          <span class="close" data-target="socModal">&times;</span>
+          <h2>Azure SOC Lab Walkthrough</h2>
+          <p>Your detailed SOC lab walkthrough here...</p>
+        </div>
+      </div>
+      <div id="accessModal" class="modal">
+        <div class="modal-content">
+          <span class="close" data-target="accessModal">&times;</span>
+          <h2>Access Control & Security Auditing Lab Walkthrough</h2>
+          <p>Your Hydra + FTP walkthrough here...</p>
+        </div>
+      </div>
+      <div id="networkModal" class="modal">
+        <div class="modal-content">
+          <span class="close" data-target="networkModal">&times;</span>
+          <h2>Network Traffic Analysis & Intrusion Detection Lab Walkthrough</h2>
+          <p>Your TCPDump + Wireshark walkthrough here...</p>
+        </div>
+      </div>
 
-      <!-- Contact -->
       <article id="contact">
         <h2 class="major">CONTACT</h2>
-        <p>Let’s connect! I’m open to opportunities in cybersecurity, cloud defense, and data-driven security analytics.</p>
+        <p>Let’s connect! I’m open to opportunities in cybersecurity, cloud defense, and data analytics.</p>
         <ul class="icons">
-          <li><a href="https://github.com/mahabaig" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-          <li><a href="https://www.linkedin.com/in/mahabaig" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-          <li><a href="mailto:mahasaudbaig@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+          <li><a href="https://github.com/mahabaig" class="icon brands fa-github"></a></li>
+          <li><a href="https://www.linkedin.com/in/mahabaig" class="icon brands fa-linkedin"></a></li>
+          <li><a href="mailto:mahasaudbaig@gmail.com" class="icon solid fa-envelope"></a></li>
         </ul>
       </article>
-
     </div>
 
     <footer id="footer">
@@ -315,61 +300,49 @@
 
   <!-- Stop HTML5UP interference -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const modals = document.querySelectorAll(".modal, .modal-content, .project-card, .close");
-      modals.forEach(el => {
-        el.addEventListener("click", e => e.stopPropagation());
+    document.addEventListener("DOMContentLoaded", function(){
+      document.querySelectorAll(".modal,.modal-content,.project-card,.close").forEach(el=>{
+        el.addEventListener("click",e=>e.stopPropagation());
       });
     });
   </script>
 
   <!-- Modal Logic -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const modals = {
-        socModal: document.getElementById("socModal"),
-        accessModal: document.getElementById("accessModal"),
-        networkModal: document.getElementById("networkModal")
+    document.addEventListener("DOMContentLoaded",function(){
+      const map={
+        socLabCard:"socModal",
+        accessLabCard:"accessModal",
+        networkLabCard:"networkModal"
       };
-
-      const cards = {
-        socLabCard: "socModal",
-        accessLabCard: "accessModal",
-        networkLabCard: "networkModal"
-      };
-
-      for (const [cardId, modalId] of Object.entries(cards)) {
-        const card = document.getElementById(cardId);
-        const modal = document.getElementById(modalId);
-        if (card && modal) {
-          card.addEventListener("click", e => {
-            e.stopPropagation();
-            modal.style.display = "block";
-            document.body.style.overflow = "hidden";
+      Object.entries(map).forEach(([cardId,modalId])=>{
+        const card=document.getElementById(cardId);
+        const modal=document.getElementById(modalId);
+        if(card&&modal){
+          card.addEventListener("click",()=>{
+            modal.style.display="block";
+            document.body.style.overflow="hidden";
           });
         }
-      }
-
-      document.querySelectorAll(".close").forEach(btn => {
-        btn.addEventListener("click", e => {
-          e.stopPropagation();
-          const targetId = btn.getAttribute("data-target");
-          const modal = document.getElementById(targetId);
-          if (modal) modal.style.display = "none";
-          document.body.style.overflow = "auto";
+      });
+      document.querySelectorAll(".close").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          const id=btn.dataset.target;
+          const modal=document.getElementById(id);
+          if(modal)modal.style.display="none";
+          document.body.style.overflow="auto";
         });
       });
-
-      window.addEventListener("click", e => {
-        Object.values(modals).forEach(modal => {
-          if (e.target === modal) {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
+      window.addEventListener("click",e=>{
+        Object.values(map).forEach(id=>{
+          const modal=document.getElementById(id);
+          if(e.target===modal){
+            modal.style.display="none";
+            document.body.style.overflow="auto";
           }
         });
       });
     });
   </script>
-
 </body>
 </html>
